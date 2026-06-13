@@ -1,0 +1,59 @@
+name: Open Charge Map API Plans
+description: >
+  Open Charge Map operates as a non-commercial, community-supported open data project.
+  The API is free to use for any developer or organization that registers for an API key
+  through the Open Charge Map website. There are no paid tiers or commercial licensing fees.
+  The project is sustained through community contributions, donations, and partnerships
+  with organizations that support open EV charging data. API keys are required for all
+  regular API usage to allow the project to monitor usage patterns and prevent abuse.
+  Anonymous requests may function in limited capacity but are not recommended for production
+  use. POST operations for contributing data require an authenticated user account.
+specificationVersion: '0.1'
+url: https://openchargemap.org/site/develop
+plans:
+  - name: Free / Community
+    description: >
+      The standard access tier for all registered developers. Free to use with an API key
+      obtained by registering a user account at openchargemap.org. Provides full read access
+      to the global EV charging station registry via the POI and Reference Data API endpoints.
+      Supports geographic search, bounding box queries, filtering by connection type, operator,
+      level, and status. The API key is passed as a query parameter (?key=YOUR_API_KEY) or
+      HTTP header (X-API-Key). Results are limited to a maximum of 250 records per request
+      for queries without explicit pagination controls.
+    url: https://openchargemap.org/site/develop
+    pricing: Free
+    pricingModel: free
+    features:
+      - Full read access to 300,000+ EV charging locations globally
+      - Geographic search by latitude/longitude with distance radius
+      - Bounding box and polygon area filtering
+      - Filter by country, operator, connection type, level, status
+      - JSON output with compact and verbose modes
+      - Reference data lookups (connection types, operators, countries, etc.)
+      - User comments and media items in results (optional)
+      - API key via query parameter or X-API-Key header
+      - Up to 250 results per request
+  - name: Contributor
+    description: >
+      Extended access for users who actively contribute to the Open Charge Map dataset.
+      Registered user accounts with verified contributor status gain access to the POI
+      submission API (POST /poi/) to add new charging stations and update existing records.
+      Data contributions are reviewed by the community and integrated into the global registry.
+      Contributor accounts are free and obtained through the standard registration process.
+    url: https://openchargemap.org/site/about
+    pricing: Free
+    pricingModel: free
+    features:
+      - All Free tier features
+      - POST access to submit new charging station POIs
+      - Ability to update and correct existing POI records
+      - Submit user comments and check-ins
+      - Upload media items (photos) for charging locations
+      - Participate in community discussions
+      - Reputation points system for contributor recognition
+notes:
+  - Open Charge Map is a non-commercial, non-profit community project
+  - Sustained by community contributions, donations, and organizational partnerships
+  - API keys are free — register at https://openchargemap.org/loginprovider/beginlogin
+  - Commercial organizations using the API are encouraged to donate or sponsor the project
+  - Data is available under open data licenses from contributing data providers

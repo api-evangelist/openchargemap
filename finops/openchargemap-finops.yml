@@ -1,0 +1,112 @@
+name: Open Charge Map API FinOps Framework
+description: >
+  FinOps Framework FOCUS-aligned cost and usage considerations for the Open Charge Map
+  API. As a free, community-supported open data project, direct API costs are zero for
+  standard usage. FinOps considerations focus on indirect costs: infrastructure to consume
+  the API, data storage for cached results, engineering time for integration, and optional
+  sponsorship or donation contributions to sustain the open data ecosystem. Organizations
+  building commercial products on Open Charge Map data should factor in sustainability
+  contributions and plan for potential future access changes.
+specificationVersion: '1.0'
+framework: FinOps Framework
+alignment: FOCUS 1.0
+url: https://openchargemap.org/site/develop
+provider: Open Charge Map
+costDrivers:
+  - name: Direct API Cost
+    description: >
+      The Open Charge Map API is free to use for all registered developers. There are no
+      subscription fees, request-based charges, or usage tiers. The primary direct cost
+      is zero for read access to the global EV charging station registry.
+    category: License
+    unit: none
+    cost: $0
+    optimization: >
+      Register for a free API key to ensure stable access and avoid implicit rate limits
+      on anonymous requests. API key registration is free at openchargemap.org.
+
+  - name: Community Sustainability Contribution
+    description: >
+      Open Charge Map is sustained by community donations and organizational sponsorships.
+      Organizations building commercial products or services on top of Open Charge Map data
+      are encouraged to contribute financially to sustain the project. Failure to support
+      the project's sustainability may risk the long-term availability of the free API.
+    category: Sustainability
+    unit: donation / sponsorship
+    cost: Voluntary
+    optimization: >
+      Budget a nominal sponsorship contribution proportional to the commercial value
+      derived from the Open Charge Map dataset. Contact the project via openchargemap.org
+      to discuss organizational partnership or sponsorship arrangements.
+
+  - name: API Integration Engineering
+    description: >
+      Internal engineering effort to integrate the Open Charge Map REST API into
+      applications or services. Includes authentication setup, response parsing, geographic
+      query design, reference data caching, and handling the 250-result-per-request limit
+      for large-area queries through geographic subdivision.
+    category: Engineering
+    unit: person-hours
+    optimization: >
+      Cache reference data (connection types, operators, countries) locally as it changes
+      infrequently. Use bounding box queries to retrieve targeted datasets efficiently.
+      Implement client-side geographic tiling for full-coverage national or regional queries.
+      Include the ?client= identifier to avoid traffic being flagged as a bot.
+
+  - name: Data Storage and Caching Infrastructure
+    description: >
+      Applications consuming Open Charge Map data at scale will incur infrastructure costs
+      for caching API responses to reduce repeat requests and improve response times.
+      Storing charging station data locally (database, object storage) for offline or
+      high-availability use cases incurs storage costs proportional to dataset size.
+    category: Infrastructure
+    unit: GB-month
+    optimization: >
+      Implement a local cache with a TTL appropriate to your use case (charging station
+      data changes infrequently). Use compact=true and verbose=false query parameters to
+      reduce response payload size. Request only the fields necessary for your application.
+
+  - name: Geospatial Query Compute
+    description: >
+      Applications performing high-frequency geographic searches (e.g., route planning,
+      real-time EV navigation) may generate significant API request volume. Compute costs
+      for processing geographic queries and rendering results on maps should be accounted
+      for in application infrastructure budgets.
+    category: Compute
+    unit: API requests / map renders
+    optimization: >
+      Pre-fetch and cache charging station data for commonly queried regions. Use bounding
+      box queries to batch-retrieve all stations for a region rather than making per-point
+      radius queries. Consider a nightly data sync for stable geographic areas.
+
+costAllocation:
+  - dimension: Application / Product
+    description: Allocate API integration engineering costs by the product or service consuming Open Charge Map data
+  - dimension: Geographic Region
+    description: Track data storage and query costs by the geographic regions covered (national, regional, global)
+  - dimension: Environment
+    description: Separate sandbox/development integration effort from production operational costs
+  - dimension: Sustainability
+    description: Track voluntary community contribution amounts as a separate line item aligned with open data usage value
+
+budgeting:
+  - recommendation: >
+      Budget zero for direct Open Charge Map API access costs, but include a line item
+      for community sustainability contributions proportional to the commercial value
+      derived from the open dataset.
+  - recommendation: >
+      Allocate engineering budget for geographic query optimization and local caching
+      infrastructure to handle the 250-result-per-request limit at scale.
+  - recommendation: >
+      Plan for potential API changes or access restrictions by implementing a local data
+      mirror or cache for mission-critical applications. The project is community-funded
+      and access terms may evolve.
+  - recommendation: >
+      Monitor the Open Charge Map community forum (community.openchargemap.org) for
+      announcements about API changes, new features, or access policy updates.
+
+contact:
+  website: https://openchargemap.org/
+  developer: https://openchargemap.org/site/develop
+  community: https://community.openchargemap.org/
+  github: https://github.com/openchargemap/ocm-system

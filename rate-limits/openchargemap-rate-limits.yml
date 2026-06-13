@@ -1,0 +1,69 @@
+name: Open Charge Map API Rate Limits
+description: >
+  Open Charge Map applies usage controls to ensure platform stability and fair access across
+  the developer community. The API does not publish precise numeric rate limits but enforces
+  restrictions to prevent abuse. API keys are required for regular use; anonymous requests
+  are subject to stricter implicit limits. The primary documented restriction is a maximum
+  results cap of 250 records per request for general POI queries. The Microsoft Power Platform
+  connector documentation indicates a throttling limit of 100 API calls per connection per
+  60-second window. The project actively monitors for excessive request patterns and may
+  throttle or block clients that appear to be crawlers or bots without proper identification.
+  Developers are encouraged to include a client identifier string in requests.
+specificationVersion: '0.1'
+url: https://openchargemap.org/site/develop/api
+limits:
+  - name: Results Per Request Limit
+    description: >
+      POI API queries are restricted to a maximum of 250 results per request. Requests
+      specifying maxresults greater than 250 are subject to restrictions. Use geographic
+      filtering (bounding box, distance radius) or additional filter parameters to retrieve
+      targeted datasets within the limit. Pagination is not natively supported; use
+      geographic subdivision for large-area queries.
+    type: results
+    limit: 250
+    parameter: maxresults
+    scope: per-request
+    enforcement: Results capped or request rejected
+  - name: API Calls Per Connection (Connector Throttle)
+    description: >
+      Per the Microsoft Power Platform (Power Automate / Logic Apps) connector documentation,
+      the Open Charge Map connector enforces a throttling limit of 100 API calls per
+      connection per 60-second renewal period. This limit applies to the connector-mediated
+      access pattern. Direct API integrations may have different effective limits determined
+      by platform monitoring.
+    type: requests
+    limit: 100
+    period: 60 seconds
+    scope: per-connection
+    enforcement: HTTP 429 Too Many Requests
+    source: https://learn.microsoft.com/en-us/connectors/openchargemapip/
+  - name: Authentication Requirement
+    description: >
+      All regular API usage requires an API key passed as either the ?key= query parameter
+      or the X-API-Key HTTP header. Anonymous requests (no API key) may function in limited
+      capacity but are subject to stricter implicit rate controls. API keys are free to
+      obtain by registering at openchargemap.org. Production applications must use a
+      registered API key.
+    type: authentication
+    methods:
+      - query parameter: key
+      - http header: X-API-Key
+    anonymous_access: limited
+    enforcement: Implicit throttling on anonymous requests
+  - name: Client Identification
+    description: >
+      Developers are encouraged (not required) to include a client query parameter identifying
+      their application (e.g., ?client=MyAppName/1.0). This helps the Open Charge Map team
+      distinguish legitimate applications from crawlers and bots, and reduces the likelihood
+      of traffic being throttled. Applications that do not self-identify may be subject to
+      increased scrutiny.
+    type: identification
+    parameter: client
+    required: false
+    recommended: true
+notes:
+  - Specific numeric rate limits beyond the 250-result cap are not publicly documented
+  - The project monitors for excessive or bot-like request patterns
+  - Developers experiencing throttling should contact the Open Charge Map community
+  - Community forum for API support: https://community.openchargemap.org/
+  - API keys are real, registered keys — test/fake keys are detected and blocked

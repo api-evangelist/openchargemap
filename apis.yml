@@ -1,0 +1,117 @@
+aid: api-evangelist-openchargemap
+name: Open Charge Map
+description: >
+  Open Charge Map is the global public registry of electric vehicle charging locations,
+  established in 2011 as a non-commercial, community-driven project. The platform maintains
+  a crowdsourced dataset of 300,000+ charging points worldwide, combining manually entered
+  data with imported open data from government registries and charging networks. The REST API
+  enables developers to search and retrieve POI (Points of Interest) data on EV charging
+  stations, including location details, equipment specifications, connection types, operator
+  information, and user-submitted check-ins and photos. Data can be filtered by geographic
+  coordinates, bounding box, country, operator, connection type, charging level, and
+  operational status. The API is free to use with an API key registration and supports both
+  read (GET) and write (POST) operations for contributing new charging location data.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/openchargemap/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Electric Vehicles
+  - EV Charging
+  - Charging Stations
+  - Points of Interest
+  - Open Data
+  - Geospatial
+  - Transportation
+  - Clean Energy
+  - Crowdsourced
+  - Registry
+apis:
+  - name: Open Charge Map POI API
+    description: >
+      Primary REST API for searching and retrieving EV charging station data (Points of
+      Interest) from the Open Charge Map global registry. Supports geographic search by
+      latitude/longitude with distance radius, bounding box filtering, country filtering,
+      and filtering by operator, connection type, charging level, usage type, and operational
+      status. Returns full POI data including address, equipment details, connection types,
+      power levels, operator info, and user comments. Supports compact and verbose output
+      formats in JSON. An API key is required and passed as a query parameter or HTTP header.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://openchargemap.org/site/develop/api
+    baseURL: https://api.openchargemap.io/v3
+    tags:
+      - EV Charging
+      - Points of Interest
+      - Geospatial Search
+      - Charging Stations
+    properties:
+      - type: Documentation
+        url: https://openchargemap.org/site/develop/api
+      - type: GitHub
+        url: https://github.com/openchargemap/ocm-system
+  - name: Open Charge Map Reference Data API
+    description: >
+      REST API endpoint returning core reference data used for interpreting POI results,
+      including connection types, charging levels, operators, countries, status types,
+      usage types, supply types (AC/DC), and submission status types. This data provides
+      the lookup tables needed to decode numeric ID fields returned in POI results. Can be
+      filtered by country. Returns reference data in JSON format with an API key.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://openchargemap.org/site/develop/api
+    baseURL: https://api.openchargemap.io/v3
+    tags:
+      - Reference Data
+      - Connection Types
+      - Operators
+      - Countries
+    properties:
+      - type: Documentation
+        url: https://openchargemap.org/site/develop/api
+  - name: Open Charge Map POI Submit API
+    description: >
+      REST API endpoint for contributing new EV charging station data or updating existing
+      POI records in the Open Charge Map global registry. Requires an authenticated API key
+      associated with a registered Open Charge Map user account. Submitted data is reviewed
+      and integrated into the community dataset. Supports adding new charging locations with
+      full address, equipment, connection type, and operator details.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://openchargemap.org/site/develop/api
+    baseURL: https://api.openchargemap.io/v3
+    tags:
+      - Submit
+      - Contribute
+      - Crowdsourced
+      - Data Entry
+    properties:
+      - type: Documentation
+        url: https://openchargemap.org/site/develop/api
+common:
+  - type: Website
+    url: https://openchargemap.org/
+  - type: Documentation
+    url: https://openchargemap.org/site/develop/api
+  - type: Developer
+    url: https://openchargemap.org/site/develop
+  - type: GitHub
+    url: https://github.com/openchargemap/ocm-system
+  - type: GitHubOrg
+    url: https://github.com/openchargemap
+  - type: Community
+    url: https://community.openchargemap.org/
+  - type: Apps
+    url: https://openchargemap.org/site/develop/apps
+  - type: TermsOfService
+    url: https://openchargemap.org/site/about/terms
+  - type: About
+    url: https://openchargemap.org/site/about
+  - type: Plans
+    url: plans/openchargemap-plans.yml
+  - type: RateLimits
+    url: rate-limits/openchargemap-rate-limits.yml
+  - type: FinOps
+    url: finops/openchargemap-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
