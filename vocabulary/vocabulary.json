@@ -1,0 +1,115 @@
+{
+  "@context": "https://schema.org/",
+  "name": "Open Charge Map API Vocabulary",
+  "description": "Domain vocabulary for the Open Charge Map API covering EV charging stations, connection types, operators, and related concepts",
+  "terms": [
+    {
+      "term": "POI",
+      "label": "Point of Interest",
+      "definition": "A charging station location entry in the Open Charge Map registry. Includes address, equipment details, connection types, operator information, and community data.",
+      "type": "concept"
+    },
+    {
+      "term": "ConnectionType",
+      "label": "Connection Type",
+      "definition": "The standard connector type used at a charging station (e.g., Type 2, CCS, CHAdeMO, Tesla). Defined by IEC standards.",
+      "type": "concept"
+    },
+    {
+      "term": "ChargeLevel",
+      "label": "Charging Level",
+      "definition": "The power level of a charging station: Level 1 (under 2kW, 120V AC), Level 2 (over 2kW, 240V AC), or Level 3 (DC Fast Charge, over 40kW).",
+      "type": "concept"
+    },
+    {
+      "term": "OperatorInfo",
+      "label": "Network Operator",
+      "definition": "The organization responsible for operating the EV charging station or network (e.g., ChargePoint, EVgo, Tesla Supercharger).",
+      "type": "concept"
+    },
+    {
+      "term": "UsageType",
+      "label": "Usage Type",
+      "definition": "Describes access restrictions for a charging station: Public, Private, Restricted (e.g., staff only), or Pay-at-location.",
+      "type": "concept"
+    },
+    {
+      "term": "StatusType",
+      "label": "Operational Status",
+      "definition": "The operational status of a charging station or individual connection: Operational, Temporarily Unavailable, Removed/Decommissioned, or Unknown.",
+      "type": "concept"
+    },
+    {
+      "term": "AddressInfo",
+      "label": "Address Information",
+      "definition": "The physical location details of a POI including street address, town, region, postcode, country, and geographic coordinates (latitude/longitude).",
+      "type": "concept"
+    },
+    {
+      "term": "DataProvider",
+      "label": "Data Provider",
+      "definition": "The source organization that contributed or maintains the data for a charging station entry. May be OCM community, a national registry, or a charging network.",
+      "type": "concept"
+    },
+    {
+      "term": "UserComment",
+      "label": "User Check-In / Comment",
+      "definition": "Community-submitted status update or comment about a specific charging station, including check-in type, rating, and free-text comment.",
+      "type": "concept"
+    },
+    {
+      "term": "MediaItem",
+      "label": "Media Item / Photo",
+      "definition": "A photo or image of a charging station submitted by a community member, linked to a specific POI.",
+      "type": "concept"
+    },
+    {
+      "term": "CoreReferenceData",
+      "label": "Core Reference Data",
+      "definition": "Lookup tables needed to decode numeric ID fields in POI results, including connection types, operators, countries, and status types.",
+      "type": "concept"
+    },
+    {
+      "term": "APIKey",
+      "label": "API Key",
+      "definition": "A unique key required to authenticate requests to the Open Charge Map API. Obtained via free registration at openchargemap.org.",
+      "type": "security"
+    },
+    {
+      "term": "CompactOutput",
+      "label": "Compact Output Mode",
+      "definition": "An API response format where reference data is returned as numeric IDs rather than full objects, reducing response size. Used with compact=true parameter.",
+      "type": "parameter"
+    },
+    {
+      "term": "BoundingBox",
+      "label": "Bounding Box",
+      "definition": "A geographic rectangle defined by (latitude1,longitude1,latitude2,longitude2) used to spatially filter charging station results.",
+      "type": "parameter"
+    },
+    {
+      "term": "OpenData",
+      "label": "Open Data Flag",
+      "definition": "Indicates whether a charging station entry is covered by an open data license. Filter with opendata=true to retrieve only openly-licensed records.",
+      "type": "concept"
+    },
+    {
+      "term": "SupplyType",
+      "label": "Supply Type",
+      "definition": "The electrical supply type of a connection: AC (single or three phase) or DC (direct current). Relevant for charger compatibility.",
+      "type": "concept"
+    },
+    {
+      "term": "PowerKW",
+      "label": "Power in Kilowatts",
+      "definition": "The maximum power output of a charging connection in kilowatts (kW). Used to indicate charging speed.",
+      "type": "property"
+    },
+    {
+      "term": "CheckinStatusType",
+      "label": "Check-in Status Type",
+      "definition": "Classification of a community check-in: e.g., 'All OK', 'Not Working', 'Under Repair', 'Equipment Mismatch'.",
+      "type": "concept"
+    }
+  ]
+}

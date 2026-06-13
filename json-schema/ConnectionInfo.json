@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/ConnectionInfo.json",
+  "title": "ConnectionInfo",
+  "type": "object",
+  "description": "Details on the equipment type and power capability.\n\nIf calling the API in verbose mode related models are also included in the result (e.g. ConnectionType, Level, StatusType, CurrentType)",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "example": 206241
+    },
+    "ConnectionTypeID": {
+      "type": "integer",
+      "default": null,
+      "example": 25
+    },
+    "ConnectionType": {
+      "$ref": "#/components/schemas/ConnectionType"
+    },
+    "Reference": {
+      "type": "string",
+      "description": "Optional operators reference for this connection/port",
+      "default": null
+    },
+    "StatusTypeID": {
+      "type": "integer",
+      "description": "Status Type reference ID. 0 = Unknown",
+      "default": 0,
+      "example": 50
+    },
+    "StatusType": {
+      "$ref": "#/components/schemas/StatusType"
+    },
+    "LevelID": {
+      "type": "integer",
+      "example": 2,
+      "description": "A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.",
+      "deprecated": true
+    },
+    "Level": {
+      "$ref": "#/components/schemas/LevelType"
+    },
+    "Amps": {
+      "type": "integer",
+      "description": "EVSE supply max current in Amps",
+      "default": null,
+      "example": 32
+    },
+    "Voltage": {
+      "type": "number",
+      "description": "EVSE supply voltage",
+      "default": null,
+      "example": 230
+    },
+    "PowerKW": {
+      "type": "number",
+      "description": "Peak available power in kW",
+      "default": null,
+      "example": 7.4
+    },
+    "CurrentTypeID": {
+      "description": "The supply type reference ID (e.g. DC etc)",
+      "default": null,
+      "example": 10,
+      "type": "integer"
+    },
+    "CurrentType": {
+      "$ref": "#/components/schemas/SupplyType"
+    },
+    "Quantity": {
+      "type": "integer",
+      "description": "Optional summary number of equipment items available with this specification",
+      "default": null,
+      "example": 2
+    },
+    "Comments": {
+      "type": "string"
+    }
+  }
+}

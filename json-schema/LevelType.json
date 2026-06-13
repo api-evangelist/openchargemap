@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/LevelType.json",
+  "title": "LevelType",
+  "type": "object",
+  "description": "A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "example": 2
+    },
+    "Title": {
+      "type": "string",
+      "example": "Level 2 : Medium (Over 2kW)"
+    },
+    "Comments": {
+      "type": "string",
+      "example": "Over 2 kW, usually non-domestic socket type"
+    },
+    "IsFastChargeCapable": {
+      "type": "boolean",
+      "description": "If true, this level is considered 'fast' charging, relative to other levels."
+    }
+  },
+  "required": [
+    "ID",
+    "Comments",
+    "IsFastChargeCapable"
+  ]
+}

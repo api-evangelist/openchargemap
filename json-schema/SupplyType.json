@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/SupplyType.json",
+  "title": "SupplyType",
+  "type": "object",
+  "description": "Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "example": 10
+    },
+    "Title": {
+      "type": "string",
+      "example": "AC (Single-Phase)"
+    }
+  },
+  "required": [
+    "ID"
+  ]
+}

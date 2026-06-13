@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/UserCommentType.json",
+  "title": "UserCommentType",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "type": "integer"
+    },
+    "Title": {
+      "type": "string"
+    }
+  },
+  "description": "Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)"
+}

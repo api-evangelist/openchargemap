@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/StatusType.json",
+  "title": "StatusType",
+  "type": "object",
+  "description": "The Status Type of a site or equipment item indicates whether it is generally operational.",
+  "properties": {
+    "IsOperational": {
+      "type": "boolean",
+      "default": false,
+      "example": true
+    },
+    "IsUserSelectable": {
+      "type": "boolean",
+      "default": false,
+      "example": true
+    },
+    "ID": {
+      "type": "integer",
+      "example": 50
+    },
+    "Title": {
+      "type": "string",
+      "example": "Operational"
+    }
+  },
+  "required": [
+    "IsOperational",
+    "IsUserSelectable",
+    "ID"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/UserComment.json",
+  "title": "UserComment",
+  "type": "object",
+  "description": "A user comment or check-in for a specific charging point (POI/Site)",
+  "properties": {
+    "ID": {
+      "type": "string"
+    },
+    "ChargePointID": {
+      "type": "integer"
+    },
+    "CommentTypeID": {
+      "type": "integer"
+    },
+    "CommentType": {
+      "$ref": "#/components/schemas/UserCommentType"
+    },
+    "UserName": {
+      "type": "string"
+    },
+    "Comment": {
+      "type": "string"
+    },
+    "RelatedURL": {
+      "type": "string"
+    },
+    "DateCreated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "User": {
+      "$ref": "#/components/schemas/UserInfo"
+    },
+    "CheckinStatusTypeID": {
+      "type": "integer"
+    },
+    "CheckinStatusType": {
+      "$ref": "#/components/schemas/CheckinStatusType"
+    }
+  }
+}

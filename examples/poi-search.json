@@ -1,0 +1,62 @@
+{
+  "description": "Example: Search for EV charging stations in the US, limited to 10 results",
+  "request": {
+    "method": "GET",
+    "url": "https://api.openchargemap.io/v3/poi/",
+    "headers": {
+      "X-API-Key": "YOUR_API_KEY"
+    },
+    "query_parameters": {
+      "output": "json",
+      "countrycode": "US",
+      "maxresults": 10,
+      "compact": true,
+      "verbose": false
+    }
+  },
+  "response": {
+    "status": 200,
+    "content_type": "application/json",
+    "body": [
+      {
+        "IsRecentlyVerified": true,
+        "ID": 12345,
+        "UUID": "d3d2b4e6-1234-4567-abcd-ef0123456789",
+        "DataProviderId": 1,
+        "OperatorId": 23,
+        "UsageTypeId": 1,
+        "AddressInfo": {
+          "ID": 98765,
+          "Title": "Downtown Charging Hub",
+          "AddressLine1": "123 Main Street",
+          "Town": "San Francisco",
+          "StateOrProvince": "CA",
+          "Postcode": "94105",
+          "CountryID": 2,
+          "Latitude": 37.7749,
+          "Longitude": -122.4194,
+          "DistanceUnit": 0
+        },
+        "Connections": [
+          {
+            "ID": 11111,
+            "ConnectionTypeID": 25,
+            "StatusTypeID": 50,
+            "LevelID": 3,
+            "Amps": 200,
+            "Voltage": 400,
+            "PowerKW": 50.0,
+            "CurrentTypeID": 30,
+            "Quantity": 2
+          }
+        ],
+        "NumberOfPoints": 2,
+        "GeneralComments": "24/7 access",
+        "StatusTypeID": 50,
+        "SubmissionStatusTypeID": 200,
+        "DateCreated": "2022-03-15T10:00:00Z",
+        "DateLastVerified": "2024-01-10T08:00:00Z"
+      }
+    ]
+  }
+}

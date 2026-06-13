@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/UsageType.json",
+  "title": "UsageType",
+  "type": "object",
+  "description": "The Usage Type of a site indicates the general restrictions on usage.",
+  "properties": {
+    "IsPayAtLocation": {
+      "type": "boolean",
+      "description": "If true, usage requires paying at location"
+    },
+    "IsMembershipRequired": {
+      "type": "boolean",
+      "description": "If true, this usage type requires registration or membership with a service."
+    },
+    "IsAccessKeyRequired": {
+      "type": "boolean",
+      "description": "If true this usage required a physical access key",
+      "deprecated": true
+    },
+    "ID": {
+      "type": "integer"
+    },
+    "Title": {
+      "type": "string",
+      "example": "Public - Membership Required",
+      "pattern": "^(.*)$"
+    }
+  },
+  "required": [
+    "IsPayAtLocation",
+    "IsMembershipRequired",
+    "IsAccessKeyRequired",
+    "ID"
+  ]
+}

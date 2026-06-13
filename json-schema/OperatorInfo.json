@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/OperatorInfo.json",
+  "title": "OperatorInfo",
+  "type": "object",
+  "description": "An Operator is the public organisation which controls a network of charging points.",
+  "properties": {
+    "WebsiteURL": {
+      "type": "string",
+      "description": "Website for more information about this network",
+      "example": "http://www.pod-point.com/",
+      "pattern": "^(.*)$"
+    },
+    "Comments": {
+      "type": "string",
+      "example": null
+    },
+    "PhonePrimaryContact": {
+      "type": "string",
+      "description": "Primary contact number for network users",
+      "default": null
+    },
+    "PhoneSecondaryContact": {
+      "type": "string",
+      "description": "Secondary contact number",
+      "default": null,
+      "pattern": "^(.*)$"
+    },
+    "IsPrivateIndividual": {
+      "type": "boolean",
+      "description": "If true, this operator represents a private individual",
+      "deprecated": true,
+      "default": false,
+      "example": false
+    },
+    "AddressInfo": {
+      "$ref": "#/components/schemas/AddressInfo"
+    },
+    "BookingURL": {
+      "type": "string"
+    },
+    "ContactEmail": {
+      "type": "string",
+      "default": "",
+      "example": "enquiries@pod-point.com",
+      "pattern": "^(.*)$"
+    },
+    "FaultReportEmail": {
+      "type": "string",
+      "description": "Used to send automated notification to network operator if a user submits a fault report comment/check-in",
+      "example": "enquiries@pod-point.com",
+      "pattern": "^(.*)$"
+    },
+    "IsRestrictedEdit": {
+      "type": "boolean",
+      "description": "If true, this network restricts community edits for OCM data"
+    },
+    "ID": {
+      "type": "integer",
+      "description": "Id"
+    },
+    "Title": {
+      "type": "string",
+      "description": "Title",
+      "example": "POD Point (UK)",
+      "pattern": "^(.*)$"
+    }
+  },
+  "required": [
+    "ID"
+  ]
+}

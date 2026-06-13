@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/AddressInfo.json",
+  "title": "AddressInfo",
+  "type": "object",
+  "description": "Geographic position for site and (nearest) address component information.",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "ID",
+      "default": 0,
+      "example": 148879
+    },
+    "AddressLine1": {
+      "type": "string",
+      "description": "First line of nearby street address",
+      "default": "",
+      "example": "Buttsgrove Way",
+      "pattern": "^(.*)$"
+    },
+    "AddressLine2": {
+      "type": "string",
+      "description": "Second line of nearby street address",
+      "default": null
+    },
+    "Town": {
+      "type": "string",
+      "description": "Town or City",
+      "example": "Huntingdon",
+      "pattern": "^(.*)$"
+    },
+    "StateOrProvince": {
+      "type": "string",
+      "description": "State or Province"
+    },
+    "Postcode": {
+      "type": "string",
+      "description": "Postal code or Zipcode",
+      "example": "PE29 1PE",
+      "pattern": "^(.*)$"
+    },
+    "CountryID": {
+      "type": "integer",
+      "description": "The reference ID for the Country",
+      "example": 1
+    },
+    "Country": {
+      "$ref": "#/components/schemas/Country"
+    },
+    "Latitude": {
+      "type": "number",
+      "description": "Site latitude coordinate in decimal degrees",
+      "default": 0,
+      "example": 52.343197
+    },
+    "Longitude": {
+      "type": "number",
+      "description": "Site longitude coordinate in decimal degrees",
+      "default": 0,
+      "example": -0.170632
+    },
+    "ContactTelephone1": {
+      "type": "string",
+      "description": "Primary contact number",
+      "default": null
+    },
+    "ContactTelephone2": {
+      "type": "string",
+      "description": "Secondary contact number",
+      "default": null
+    },
+    "ContactEmail": {
+      "type": "string",
+      "description": "Primary contact email"
+    },
+    "AccessComments": {
+      "type": "string",
+      "description": "Guidance for users to use or find the equipment"
+    },
+    "RelatedURL": {
+      "type": "string",
+      "description": "Optional website for more information",
+      "default": null
+    },
+    "Distance": {
+      "type": "number",
+      "description": "Distance from search location, if search is around a point",
+      "default": null
+    },
+    "DistanceUnit": {
+      "type": "integer",
+      "description": "Unit used for distance, 1= Miles, 2 = KM",
+      "default": 1
+    },
+    "Title": {
+      "type": "string",
+      "description": "General title for this location to aid user"
+    }
+  },
+  "required": [
+    "ID",
+    "CountryID",
+    "Latitude",
+    "Longitude"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/UserInfo.json",
+  "title": "UserInfo",
+  "type": "object",
+  "description": "Short public summary profile for a specific Open Charge Map user",
+  "properties": {
+    "ID": {
+      "type": "integer"
+    },
+    "Username": {
+      "type": "string"
+    },
+    "ReputationPoints": {
+      "type": "integer"
+    },
+    "ProfileImageURL": {
+      "type": "string"
+    }
+  }
+}

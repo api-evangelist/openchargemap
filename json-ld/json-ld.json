@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ocm": "https://openchargemap.org/schema/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "POI": "ocm:POI",
+    "AddressInfo": "ocm:AddressInfo",
+    "ConnectionInfo": "ocm:ConnectionInfo",
+    "ConnectionType": "ocm:ConnectionType",
+    "OperatorInfo": "ocm:OperatorInfo",
+    "DataProvider": "ocm:DataProvider",
+    "UsageType": "ocm:UsageType",
+    "StatusType": "ocm:StatusType",
+    "LevelType": "ocm:LevelType",
+    "SupplyType": "ocm:SupplyType",
+    "UserComment": "ocm:UserComment",
+    "MediaItem": "ocm:MediaItem",
+    "CoreReferenceData": "ocm:CoreReferenceData",
+    "CheckinStatusType": "ocm:CheckinStatusType",
+    "UserCommentType": "ocm:UserCommentType",
+    "UserProfile": "ocm:UserProfile",
+    "AuthenticationResult": "ocm:AuthenticationResult",
+    "ID": {
+      "@id": "schema:identifier",
+      "@type": "xsd:integer"
+    },
+    "UUID": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "Title": "schema:name",
+    "AddressLine1": "schema:streetAddress",
+    "Town": "schema:addressLocality",
+    "StateOrProvince": "schema:addressRegion",
+    "Postcode": "schema:postalCode",
+    "Latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:decimal"
+    },
+    "Longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:decimal"
+    },
+    "Voltage": {
+      "@id": "ocm:voltage",
+      "@type": "xsd:integer"
+    },
+    "Amps": {
+      "@id": "ocm:amperage",
+      "@type": "xsd:integer"
+    },
+    "PowerKW": {
+      "@id": "ocm:powerKilowatts",
+      "@type": "xsd:decimal"
+    },
+    "WebsiteURL": "schema:url",
+    "PhoneNumber": "schema:telephone",
+    "RelatedURL": "schema:url",
+    "ContactEmail": "schema:email",
+    "DateCreated": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "DateLastVerified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "NumberOfPoints": {
+      "@id": "ocm:numberOfPoints",
+      "@type": "xsd:integer"
+    },
+    "IsRecentlyVerified": {
+      "@id": "ocm:isRecentlyVerified",
+      "@type": "xsd:boolean"
+    },
+    "Connections": {
+      "@id": "ocm:connections",
+      "@container": "@set"
+    },
+    "UserComments": {
+      "@id": "ocm:userComments",
+      "@container": "@set"
+    },
+    "MediaItems": {
+      "@id": "ocm:mediaItems",
+      "@container": "@set"
+    },
+    "ItemURL": "schema:contentUrl",
+    "ItemThumbnailURL": "schema:thumbnailUrl",
+    "Comment": "schema:description",
+    "Rating": "schema:ratingValue",
+    "IsOpen24Hours": {
+      "@id": "ocm:isOpen24Hours",
+      "@type": "xsd:boolean"
+    },
+    "OpeningTimes": "schema:openingHours",
+    "GeneralComments": "schema:description",
+    "IsFeeRequired": {
+      "@id": "ocm:isFeeRequired",
+      "@type": "xsd:boolean"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "schema:APIReference",
+      "@id": "https://openchargemap.org/schema/",
+      "schema:name": "Open Charge Map API",
+      "schema:description": "JSON-LD context for the Open Charge Map global EV charging station registry API",
+      "schema:url": "https://api.openchargemap.io/v3",
+      "schema:documentation": "https://openchargemap.org/site/develop/api",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "Open Charge Map",
+        "schema:url": "https://openchargemap.org"
+      }
+    }
+  ]
+}

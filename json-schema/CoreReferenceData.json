@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/CoreReferenceData.json",
+  "title": "CoreReferenceData",
+  "type": "object",
+  "description": "Set of core reference data used for other API results and UI",
+  "properties": {
+    "ChargerTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LevelType"
+      }
+    },
+    "ConnectionTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConnectionType"
+      }
+    },
+    "CheckinStatusTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CheckinStatusType"
+      }
+    },
+    "Countries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Country"
+      }
+    },
+    "CurrentTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SupplyType"
+      }
+    },
+    "DataProviders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DataProvider"
+      }
+    },
+    "DataTypes": {},
+    "MetadataGroups": {
+      "type": "string"
+    },
+    "Operators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OperatorInfo"
+      }
+    },
+    "StatusTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StatusType"
+      }
+    },
+    "SubmissionStatusTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SubmissionStatusType"
+      }
+    },
+    "UsageTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UsageType"
+      }
+    },
+    "UserCommentTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserCommentType"
+      }
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "ChargerTypes": [
+        {
+          "ID": 2,
+          "description": "Level 2 : Medium (Over 2kW)",
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false
+        }
+      ],
+      "ConnectionTypes": [
+        {
+          "FormalName": "IEC 62196-2 Type 2",
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 25,
+          "description": "Type 2 (Socket Only)"
+        }
+      ],
+      "CheckinStatusTypes": [
+        {
+          "ID": 0,
+          "description": "string",
+          "IsAutomatedCheckin": true,
+          "IsPositive": true
+        }
+      ],
+      "Countries": [
+        {
+          "ISOCode": "GB",
+          "ContinentCode": "EU",
+          "ID": 1,
+          "description": "United Kingdom"
+        }
+      ],
+      "CurrentTypes": [
+        {
+          "Description": "Alternating Current - Single Phase",
+          "ID": 10,
+          "description": "AC (Single-Phase)"
+        }
+      ],
+      "DataProviders": [
+        {
+          "WebsiteURL": "https://openchargemap.org",
+          "Comments": "string",
+          "DataProviderStatusType": {
+            "IsProviderEnabled": true,
+            "ID": [
+              1
+            ],
+            "description": [
+              "Manual Data Entry"
+            ]
+          },
+          "IsRestrictedEdit": false,
+          "IsOpenDataLicensed": "null - true",
+          "IsApprovedImport": "null - true",
+          "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+          "DateLastImported": "null - '2020-02-04T23:09:00Z'",
+          "ID": 1,
+          "description": "Open Charge Map Contributors"
+        }
+      ],
+      "DataTypes": null,
+      "MetadataGroups": "string",
+      "Operators": [
+        {
+          "WebsiteURL": "http://www.pod-point.com/",
+          "Comments": null,
+          "PhonePrimaryContact": null,
+          "PhoneSecondaryContact": null,
+          "IsPrivateIndividual": false,
+          "AddressInfo": {
+            "ID": 148879,
+            "description": "Coneygear Centre",
+            "AddressLine1": "Buttsgrove Way",
+            "AddressLine2": null,
+            "Town": "Huntingdon",
+            "StateOrProvince": "string",
+            "Postcode": "PE29 1PE",
+            "CountryID": 1,
+            "Country": {
+              "ISOCode": "GB",
+              "ContinentCode": "EU",
+              "ID": 1,
+              "description": "United Kingdom"
+            },
+            "Latitude": 52.343197,
+            "Longitude": -0.170632,
+            "ContactTelephone1": null,
+            "ContactTelephone2": null,
+            "ContactEmail": "string",
+            "AccessComments": "string",
+            "RelatedURL": null,
+            "Distance": null,
+            "DistanceUnit": 1
+          },
+          "BookingURL": "string",
+          "ContactEmail": "enquiries@pod-point.com",
+          "FaultReportEmail": "enquiries@pod-point.com",
+          "IsRestrictedEdit": true,
+          "ID": 0,
+          "description": "POD Point (UK)"
+        }
+      ],
+      "StatusTypes": [
+        {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "description": "Operational"
+        }
+      ],
+      "SubmissionStatusTypes": [
+        {
+          "IsLive": true,
+          "ID": 200,
+          "description": "Submission Published"
+        }
+      ],
+      "UsageTypes": [
+        {
+          "IsPayAtLocation": true,
+          "IsMembershipRequired": true,
+          "IsAccessKeyRequired": true,
+          "ID": 0,
+          "description": "Public - Membership Required"
+        }
+      ],
+      "UserCommentTypes": [
+        {
+          "ID": 0,
+          "Title": "string"
+        }
+      ]
+    }
+  }
+}

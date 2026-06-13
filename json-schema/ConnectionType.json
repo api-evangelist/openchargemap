@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/ConnectionType.json",
+  "title": "ConnectionType",
+  "type": "object",
+  "description": "The type of end-user connection an EVSE supports.",
+  "properties": {
+    "FormalName": {
+      "type": "string",
+      "description": "Formal (standard) name for this connection type",
+      "default": "",
+      "example": "IEC 62196-2 Type 2",
+      "pattern": "^(.*)$"
+    },
+    "IsDiscontinued": {
+      "type": "boolean",
+      "description": "If true, this is an discontinued but used connection type",
+      "default": false,
+      "example": false
+    },
+    "IsObsolete": {
+      "type": "boolean",
+      "description": "If true, this is an obsolete connection type and is unlikely top be present in modern infrastructure",
+      "default": false,
+      "example": false
+    },
+    "ID": {
+      "type": "integer",
+      "example": 25
+    },
+    "Title": {
+      "type": "string",
+      "example": "Type 2 (Socket Only)"
+    }
+  }
+}

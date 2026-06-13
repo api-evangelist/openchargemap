@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/MediaItem.json",
+  "title": "MediaItem",
+  "type": "object",
+  "description": "A user submitted media item related to a specific charge point or site. Currently always an image.",
+  "properties": {
+    "ID": {
+      "type": "string"
+    },
+    "ChargePointID": {
+      "type": "string"
+    },
+    "ItemURL": {
+      "type": "string"
+    },
+    "ItemThumbnailURL": {
+      "type": "string"
+    },
+    "Comment": {
+      "type": "string"
+    },
+    "IsEnabled": {
+      "type": "boolean"
+    },
+    "IsVideo": {
+      "type": "boolean"
+    },
+    "IsFeaturedItem": {
+      "type": "boolean"
+    },
+    "IsExternalResource": {
+      "type": "boolean"
+    },
+    "User": {
+      "$ref": "#/components/schemas/UserInfo"
+    },
+    "DateCreated": {
+      "type": "string"
+    }
+  }
+}

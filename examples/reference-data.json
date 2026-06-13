@@ -1,0 +1,95 @@
+{
+  "description": "Example: Retrieve core reference data for decoding POI results",
+  "request": {
+    "method": "GET",
+    "url": "https://api.openchargemap.io/v3/referencedata/",
+    "headers": {
+      "X-API-Key": "YOUR_API_KEY"
+    },
+    "query_parameters": {
+      "countryid": 2
+    }
+  },
+  "response": {
+    "status": 200,
+    "content_type": "application/json",
+    "body": {
+      "ConnectionTypes": [
+        {
+          "ID": 25,
+          "Title": "Type 2 (Socket Only)",
+          "FormalName": "IEC 62196-2 Type 2"
+        },
+        {
+          "ID": 33,
+          "Title": "CCS (Type 2)",
+          "FormalName": "IEC 62196-3 Configuration FF"
+        },
+        {
+          "ID": 2,
+          "Title": "CHAdeMO",
+          "FormalName": "IEC 62196-3"
+        }
+      ],
+      "Countries": [
+        {
+          "ID": 2,
+          "ISOCode": "US",
+          "Title": "United States"
+        }
+      ],
+      "Operators": [
+        {
+          "ID": 23,
+          "Title": "ChargePoint",
+          "WebsiteURL": "https://www.chargepoint.com"
+        }
+      ],
+      "StatusTypes": [
+        {
+          "ID": 0,
+          "Title": "Unknown"
+        },
+        {
+          "ID": 50,
+          "Title": "Operational"
+        },
+        {
+          "ID": 75,
+          "Title": "Temporarily Unavailable"
+        }
+      ],
+      "UsageTypes": [
+        {
+          "ID": 0,
+          "Title": "Unknown"
+        },
+        {
+          "ID": 1,
+          "Title": "Public"
+        },
+        {
+          "ID": 2,
+          "Title": "Private"
+        }
+      ],
+      "LevelTypes": [
+        {
+          "ID": 1,
+          "Title": "Level 1 : Low (Under 2kW)",
+          "Comments": "120V, AC"
+        },
+        {
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)",
+          "Comments": "240V, AC"
+        },
+        {
+          "ID": 3,
+          "Title": "Level 3 : High (Over 40kW)",
+          "Comments": "DC Fast Charge"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/AuthenticationResult.json",
+  "title": "AuthenticationResult",
+  "description": "",
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "Data": {
+        "UserProfile": {
+          "ID": 1000,
+          "Username": "Joe Bloggs",
+          "Profile": "Example person who uses open charge map \ud83e\udd18",
+          "Location": "San Francisco, US",
+          "WebsiteURL": "https://openchargemap.org",
+          "ReputationPoints": 2008,
+          "Permissions": "{\"Permissions\":[{\"Level\":100},{\"Level\":1000}],\"LegacyPermissions\":\"[CountryLevel_Editor=All];[Administrator=true];\"}",
+          "DateCreated": "2011-09-28T15:11:00",
+          "DateLastLogin": "2021-11-09T07:49:00",
+          "IsProfilePublic": true,
+          "Latitude": -31,
+          "Longitude": 115,
+          "EmailAddress": "example@example.com",
+          "EmailHash": null,
+          "ProfileImageURL": "https://www.gravatar.com/avatar/e3e76940eb5e85220db216603ee6b00f?s=80&d=robohash"
+        },
+        "access_token": "eXampleJwt.AccessTOKEN"
+      },
+      "Metadata": {
+        "StatusCode": 200
+      }
+    }
+  },
+  "properties": {
+    "Data": {
+      "type": "object",
+      "required": [
+        "UserProfile",
+        "access_token"
+      ],
+      "properties": {
+        "UserProfile": {
+          "type": "object",
+          "required": [
+            "ID",
+            "Username",
+            "Profile",
+            "Location",
+            "WebsiteURL",
+            "ReputationPoints",
+            "Permissions",
+            "DateCreated",
+            "DateLastLogin",
+            "IsProfilePublic",
+            "Latitude",
+            "Longitude",
+            "EmailAddress",
+            "ProfileImageURL"
+          ],
+          "properties": {
+            "ID": {
+              "type": "number"
+            },
+            "Username": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Profile": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Location": {
+              "type": "string",
+              "minLength": 1
+            },
+            "WebsiteURL": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ReputationPoints": {
+              "type": "number"
+            },
+            "Permissions": {
+              "type": "string",
+              "minLength": 1
+            },
+            "DateCreated": {
+              "type": "string",
+              "minLength": 1
+            },
+            "DateLastLogin": {
+              "type": "string",
+              "minLength": 1
+            },
+            "IsProfilePublic": {
+              "type": "boolean"
+            },
+            "Latitude": {
+              "type": "number"
+            },
+            "Longitude": {
+              "type": "number"
+            },
+            "EmailAddress": {
+              "type": "string",
+              "minLength": 1
+            },
+            "EmailHash": {},
+            "ProfileImageURL": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "access_token": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "required": [
+        "StatusCode"
+      ],
+      "properties": {
+        "StatusCode": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "required": [
+    "Data",
+    "Metadata"
+  ]
+}

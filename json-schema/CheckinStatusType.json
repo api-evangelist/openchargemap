@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/CheckinStatusType.json",
+  "title": "CheckinStatusType",
+  "type": "object",
+  "description": "Classification for the users comment or experience using a specific charging location.",
+  "properties": {
+    "ID": {
+      "type": "integer"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "IsAutomatedCheckin": {
+      "type": "boolean",
+      "description": "If true, checkin or comment was provided by an automated system."
+    },
+    "IsPositive": {
+      "type": "boolean",
+      "description": "If true, this type of checkin/comment is considered positive."
+    }
+  },
+  "required": [
+    "ID",
+    "IsAutomatedCheckin"
+  ]
+}

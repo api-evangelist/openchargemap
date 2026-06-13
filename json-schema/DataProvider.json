@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/DataProvider.json",
+  "title": "DataProvider",
+  "type": "object",
+  "description": "A Data Provider is the controller of the source data set used to construct the details for this POI. Data has been transformed and interpreted from it's original form. Each Data Provider provides data either by an explicit license or agreement.",
+  "properties": {
+    "WebsiteURL": {
+      "type": "string",
+      "description": "Website URL for this data provider",
+      "example": "https://openchargemap.org",
+      "pattern": "^(.*)$"
+    },
+    "Comments": {
+      "type": "string",
+      "description": "General public comments with information about this Data Provider."
+    },
+    "DataProviderStatusType": {
+      "type": "object",
+      "description": "Status object describing whether this data provider is currently enabled and the type of source (manual entry, imported etc)",
+      "properties": {
+        "IsProviderEnabled": {
+          "type": "boolean",
+          "description": "If false, results from this data provider are not currently enabled",
+          "default": false,
+          "example": true
+        },
+        "ID": {
+          "type": "integer",
+          "description": "The reference ID for this provider status type",
+          "default": 0,
+          "example": [
+            1
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The Title of this status type",
+          "example": [
+            "Manual Data Entry"
+          ],
+          "pattern": "^(.*)$"
+        }
+      },
+      "required": [
+        "IsProviderEnabled",
+        "ID"
+      ]
+    },
+    "IsRestrictedEdit": {
+      "type": "boolean",
+      "description": "Currently not implemented. Indicates a potential editing restriction.",
+      "default": false,
+      "example": false
+    },
+    "IsOpenDataLicensed": {
+      "type": "boolean",
+      "description": "If true, data provider uses an Open Data license",
+      "example": true
+    },
+    "IsApprovedImport": {
+      "type": "boolean",
+      "description": "If false, data may not be imported for this provider.",
+      "example": true
+    },
+    "License": {
+      "type": "string",
+      "description": "Summary of the licensing which applies for this Data Provider. Each Data Provider has one specific license or agreement. Usage of the data requires acceptance of the given license.",
+      "example": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "pattern": "^(.*)$"
+    },
+    "DateLastImported": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time (UTC) the last import was performed for this data provider (if an import).",
+      "example": "2020-02-04T23:09:00Z"
+    },
+    "ID": {
+      "type": "integer",
+      "description": "The reference ID for this Data Provider",
+      "example": 1
+    },
+    "Title": {
+      "type": "string",
+      "description": "The Title for this Data Provider",
+      "example": "Open Charge Map Contributors",
+      "pattern": "^(.*)$"
+    }
+  },
+  "required": [
+    "IsRestrictedEdit",
+    "ID"
+  ]
+}

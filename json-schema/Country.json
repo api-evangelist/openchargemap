@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/Country.json",
+  "title": "Country",
+  "type": "object",
+  "description": "Country details",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "The Id Schema",
+      "default": 0,
+      "example": 1
+    },
+    "ISOCode": {
+      "type": "string",
+      "description": "The Isocode Schema",
+      "default": "",
+      "example": "GB",
+      "pattern": "^(.*)$"
+    },
+    "ContinentCode": {
+      "type": "string",
+      "description": "The Continentcode Schema",
+      "default": "",
+      "example": "EU",
+      "pattern": "^(.*)$"
+    },
+    "Title": {
+      "type": "string",
+      "description": "The Title Schema",
+      "default": "",
+      "example": "United Kingdom",
+      "pattern": "^(.*)$"
+    }
+  },
+  "required": [
+    "ID",
+    "ISOCode",
+    "ContinentCode"
+  ]
+}

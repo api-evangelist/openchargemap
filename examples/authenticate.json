@@ -1,0 +1,31 @@
+{
+  "description": "Example: Authenticate a user to get a JWT token for write operations",
+  "request": {
+    "method": "POST",
+    "url": "https://api.openchargemap.io/v3/profile/authenticate",
+    "headers": {
+      "Content-Type": "application/json",
+      "X-API-Key": "YOUR_API_KEY"
+    },
+    "body": {
+      "EmailAddress": "user@example.com",
+      "Password": "yourpassword"
+    }
+  },
+  "response": {
+    "status": 200,
+    "content_type": "application/json",
+    "body": {
+      "Data": {
+        "UserProfile": {
+          "ID": 1001,
+          "Username": "charginguser",
+          "EmailAddress": "user@example.com",
+          "IsProfilePublic": true,
+          "Reputation": 100
+        },
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+      }
+    }
+  }
+}

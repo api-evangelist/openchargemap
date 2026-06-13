@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openchargemap.org/schema/SubmissionStatusType.json",
+  "title": "SubmissionStatusType",
+  "type": "object",
+  "description": "Submission Status object, detailing the POI listing status",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "Submission Status Type reference ID",
+      "default": 0,
+      "example": 200
+    },
+    "Title": {
+      "type": "string"
+    },
+    "IsLive": {
+      "type": "boolean",
+      "description": "If true, POI listing is live (not draft or de-listed)",
+      "default": false
+    }
+  },
+  "required": [
+    "ID",
+    "IsLive"
+  ]
+}
