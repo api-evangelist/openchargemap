@@ -12,7 +12,7 @@ description: >
   operational status. The API is free to use with an API key registration and supports both
   read (GET) and write (POST) operations for contributing new charging location data.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/openchargemap/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -38,7 +38,7 @@ apis:
       status. Returns full POI data including address, equipment details, connection types,
       power levels, operator info, and user comments. Supports compact and verbose output
       formats in JSON. An API key is required and passed as a query parameter or HTTP header.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://openchargemap.org/site/develop/api
     baseURL: https://api.openchargemap.io/v3
     tags:
@@ -58,7 +58,7 @@ apis:
       usage types, supply types (AC/DC), and submission status types. This data provides
       the lookup tables needed to decode numeric ID fields returned in POI results. Can be
       filtered by country. Returns reference data in JSON format with an API key.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://openchargemap.org/site/develop/api
     baseURL: https://api.openchargemap.io/v3
     tags:
@@ -76,7 +76,7 @@ apis:
       associated with a registered Open Charge Map user account. Submitted data is reviewed
       and integrated into the community dataset. Supports adding new charging locations with
       full address, equipment, connection type, and operator details.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://openchargemap.org/site/develop/api
     baseURL: https://api.openchargemap.io/v3
     tags:
