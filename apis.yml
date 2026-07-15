@@ -88,6 +88,8 @@ apis:
       - type: Documentation
         url: https://openchargemap.org/site/develop/api
 common:
+  - type: AgenticAccess
+    url: agentic-access/openchargemap-agentic-access.yml
   - type: DomainSecurity
     url: security/openchargemap-domain-security.yml
   - type: Authentication
