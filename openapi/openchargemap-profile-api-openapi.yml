@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Open Charge Map Comment Profile API
+  version: '3.1'
+  termsOfService: https://openchargemap.org/site/about/terms
+  contact:
+    name: Contact
+    url: https://openchargemap.org/site/about
+  description: "The Open Charge Map API provides access to the worlds largest registry of charging locations as Open Data. You can integrate this API into your own apps or services and export charging location data into your own systems. \n\n**To obtain a free API key Sign In to https://openchargemap.org and choose 'my apps' from the `my profile` menu, then select `Register An Application` to get your API key.**\n\nTo retrieve site (POI) data, see the `/poi` endpoint. To fetch general lookup information such as connector types, network operators etc, use the `/referencedata` endpoint.\n\n**Use of the OCM API is subject to terms and conditions. By using the API you indicate acceptance of these terms.**\n\nIf you wish to export charging location data into your own systems or applications the most flexible way is to use our API, which provides an export in a variety of formats. If you wish to regularly refresh the entire dataset, please clone our data from GitHub. You can also opt to run your own private API mirror.\n\n### Fair Usage Policy\nThe basic API is provided as a free service with no warranty or service level agreement. Providing this API to you costs us actual money for server resources and data transfer fees.\n\nYou must provide your API key as an `X-API-Key header` (case sensitive) or set the `key=YourAPIKey` url parameter. You should also set your http user-agent to a custom value to help identify your app.\n\n\n\n*Do not repeatedly call the API with duplicate queries. Debounce/throttle your API requests to minimise the work our API has to do. The API administrator (Open Charge Map) reserves the right to ban API callers (including automated banning) if callers make excessive/indescriminate use of the API, at the discretion of the OCM administrator.*\n\nIf you need to make a high volume of queries against the API please host your own API mirror or import the data into your own API.\n\n### Example API Calls\nReturn charging location information for the US in JSON format, limited to the first 10 results: `https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=10?key=<your key>`\n\nThe default output contains a lot of information. Here is the same call as above, but with the most compact output (formatting removed, reference data as IDs instead of full objects, null fields skipped): \n`https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=100&compact=true&verbose=false&key=<your key>`\n\nReturn KML format results suitable for viewing in google earth/maps etc (UK, max 500 locations): `https://api.openchargemap.io/v3/poi/?output=kml&countrycode=GB&maxresults=500&key=<your key>`\n\nData returned by the API has mixed licensing and applicable copyright attribution (included in results as \"Data Provider\"). If you require Open licensed data you currently must filter by opendata=true to return data marked specifically with Open Data licenses.\n\n### Linking to OCM\nIn addition to using our  API you can link directly to specific Open Charge Map URLs in order to perform specific actions, with {OCM-ID} is the numeric ID of the POI to add work with.\n\n* Add a New POI:\t`https://openchargemap.org/site/poi/add`\n* View POI Details: `https://openchargemap.org/site/poi/details/{OCM-ID}`\n* Add a Comment/Check-In to an existing POI: \t`https://openchargemap.org/site/poi/addcomment/{OCM-ID}` \n* Add a Photo to an existing POI:\t`https://openchargemap.org/site/poi/addmediaitem/{OCM-ID}`"
+servers:
+- url: https://api.openchargemap.io/v3
+  description: API Base URL
+security:
+- APIKeyQueryString: []
+- APIKeyHeader: []
+tags:
+- name: Profile
+paths:
+  /profile/authenticate:
+    parameters: []
+    post:
+      summary: Authenticate User
+      operationId: post-authenticate
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    Data:
+                      UserProfile:
+                        ID: 1000
+                        Username: Joe Bloggs
+                        Profile: Example person who uses open charge map 🤘
+                        Location: San Francisco, US
+                        WebsiteURL: https://openchargemap.org
+                        ReputationPoints: 2008
+                        Permissions: '{"Permissions":[{"Level":100},{"Level":1000}],"LegacyPermissions":"[CountryLevel_Editor=All];[Administrator=true];"}'
+                        DateCreated: '2011-09-28T15:11:00'
+                        DateLastLogin: '2021-11-09T07:49:00'
+                        IsProfilePublic: true
+                        Latitude: -31
+                        Longitude: 115
+                        EmailAddress: example@example.com
+                        EmailHash: null
+                        ProfileImageURL: https://www.gravatar.com/avatar/e3e76940eb5e85220db216603ee6b00f?s=80&d=robohash
+                      access_token: eXampleJwt.AccessTOKEN
+                    Metadata:
+                      StatusCode: 200
+                properties:
+                  Data:
+                    type: object
+                    required:
+                    - UserProfile
+                    - access_token
+                    properties:
+                      UserProfile:
+                        $ref: '#/components/schemas/UserProfile'
+                      access_token:
+                        type: string
+                        minLength: 1
+                        description: JWT Bearer Token to use in subsequent authenticated requests
+                  Metadata:
+                    type: object
+                    required:
+                    - StatusCode
+                    properties:
+                      StatusCode:
+                        type: integer
+                required:
+                - Data
+                - Metadata
+      description: Perform user authentication, returning a model which includes the users profile and a JWT auth token to re-use in subsequent requests.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                emailaddress:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  emailaddress: string
+                  password: string
+        description: ''
+      tags:
+      - Profile
+components:
+  schemas:
+    UserProfile:
+      description: Full user profile, including non-public fields such as Email Address
+      type: object
+      x-examples:
+        example-userprofile:
+          ID: 1000
+          Username: Joe Bloggs
+          Profile: Example Open Charge Map user. 🤘
+          Location: San Francisco, US
+          WebsiteURL: https://openchargemap.org
+          ReputationPoints: 2008
+          Permissions: '{"Permissions":[{"Level":100},{"Level":1000}],"LegacyPermissions":"[CountryLevel_Editor=All];[Administrator=true];"}'
+          DateCreated: '2011-09-28T15:11:00'
+          DateLastLogin: '2021-11-09T07:49:00'
+          IsProfilePublic: true
+          Latitude: -31
+          Longitude: 115
+          EmailAddress: example@example.com
+          ProfileImageURL: https://www.gravatar.com/avatar/examplef?s=80&d=robohash
+      properties:
+        ID:
+          type: number
+        Username:
+          type: string
+          minLength: 1
+        Profile:
+          type: string
+          minLength: 1
+        Location:
+          type: string
+          minLength: 1
+        WebsiteURL:
+          type: string
+          minLength: 1
+        ReputationPoints:
+          type: number
+        Permissions:
+          type: string
+          minLength: 1
+        DateCreated:
+          type: string
+          minLength: 1
+        DateLastLogin:
+          type: string
+          minLength: 1
+        IsProfilePublic:
+          type: boolean
+        Latitude:
+          type: number
+        Longitude:
+          type: number
+        EmailAddress:
+          type: string
+          minLength: 1
+        ProfileImageURL:
+          type: string
+          minLength: 1
+      required:
+      - ID
+      - Username
+      - DateCreated
+      - IsProfilePublic
+  securitySchemes:
+    APIKeyQueryString:
+      name: key
+      type: apiKey
+      in: query
+      description: API Key supplied as query string parameter
+    APIKeyHeader:
+      name: X-API-Key
+      type: apiKey
+      in: header
+    UserAuthentication:
+      type: http
+      scheme: bearer
