@@ -1,0 +1,24 @@
+{
+  "provider": "openchargemap",
+  "sources": [
+    "openchargemap-comment-api-openapi.yml",
+    "openchargemap-mediaitem-api-openapi.yml",
+    "openchargemap-openapi-api-openapi.yml",
+    "openchargemap-poi-api-openapi.yml",
+    "openchargemap-profile-api-openapi.yml",
+    "openchargemap-referencedata-api-openapi.yml"
+  ],
+  "outputs": [
+    "openchargemap-comment-api-openapi.yml",
+    "openchargemap-mediaitem-api-openapi.yml",
+    "openchargemap-openapi-api-openapi.yml",
+    "openchargemap-poi-api-openapi.yml",
+    "openchargemap-profile-api-openapi.yml",
+    "openchargemap-referencedata-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
