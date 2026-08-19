@@ -1,0 +1,135 @@
+{
+  "item": [
+    {
+      "id": "d82001ec-f1e9-45c9-b277-f6d0b760e8f0",
+      "name": "Referencedata",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8113059b-61e4-4d16-8fe0-820148700a58",
+          "name": "Core Reference Data",
+          "request": {
+            "name": "Core Reference Data",
+            "description": {
+              "content": "Returns the core reference data used for looking up IDs such as Connection Types, Operators, Countries etc. \n\nThis information is useful for UIs such as editing systems or for fetching results in the lighter non-verbose mode, then hydrating POI results back into complex objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "referencedata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryid",
+                  "value": "<array>",
+                  "description": "Optional filter on countryid, exact match on a given numeric country id (comma separated list)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb2b35b5-7526-46fb-802c-6028cec96cb7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "referencedata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ChargerTypes\": [\n    {\n      \"ID\": 2,\n      \"Comments\": \"Over 2 kW, usually non-domestic socket type\",\n      \"IsFastChargeCapable\": false,\n      \"Title\": \"Level 2 : Medium (Over 2kW)\"\n    },\n    {\n      \"ID\": 2,\n      \"Comments\": \"Over 2 kW, usually non-domestic socket type\",\n      \"IsFastChargeCapable\": true,\n      \"Title\": \"Level 2 : Medium (Over 2kW)\"\n    }\n  ],\n  \"ConnectionTypes\": [\n    {\n      \"FormalName\": \"IEC 62196-2 Type 2\",\n      \"IsDiscontinued\": false,\n      \"IsObsolete\": false,\n      \"ID\": 25,\n      \"Title\": \"Type 2 (Socket Only)\"\n    },\n    {\n      \"FormalName\": \"IEC 62196-2 Type 2\",\n      \"IsDiscontinued\": false,\n      \"IsObsolete\": false,\n      \"ID\": 25,\n      \"Title\": \"Type 2 (Socket Only)\"\n    }\n  ],\n  \"CheckinStatusTypes\": [\n    {\n      \"ID\": 3453,\n      \"IsAutomatedCheckin\": false,\n      \"Title\": \"string\",\n      \"IsPositive\": true\n    },\n    {\n      \"ID\": 6515,\n      \"IsAutomatedCheckin\": false,\n      \"Title\": \"string\",\n      \"IsPositive\": false\n    }\n  ],\n  \"Countries\": [\n    {\n      \"ID\": 1,\n      \"ISOCode\": \"GB\",\n      \"ContinentCode\": \"EU\",\n      \"Title\": \"United Kingdom\"\n    },\n    {\n      \"ID\": 1,\n      \"ISOCode\": \"GB\",\n      \"ContinentCode\": \"EU\",\n      \"Title\": \"United Kingdom\"\n    }\n  ],\n  \"CurrentTypes\": [\n    {\n      \"ID\": 10,\n      \"Title\": \"AC (Single-Phase)\"\n    },\n    {\n      \"ID\": 10,\n      \"Title\": \"AC (Single-Phase)\"\n    }\n  ],\n  \"DataProviders\": [\n    {\n      \"IsRestrictedEdit\": false,\n      \"ID\": 1,\n      \"WebsiteURL\": \"https://openchargemap.org\",\n      \"Comments\": \"string\",\n      \"DataProviderStatusType\": {\n        \"IsProviderEnabled\": true,\n        \"ID\": 0,\n        \"description\": \"Y\"\n      },\n      \"IsOpenDataLicensed\": true,\n      \"IsApprovedImport\": true,\n      \"License\": \"Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)\",\n      \"DateLastImported\": \"2020-02-04T23:09:00Z\",\n      \"Title\": \"Open Charge Map Contributors\"\n    },\n    {\n      \"IsRestrictedEdit\": false,\n      \"ID\": 1,\n      \"WebsiteURL\": \"https://openchargemap.org\",\n      \"Comments\": \"string\",\n      \"DataProviderStatusType\": {\n        \"IsProviderEnabled\": true,\n        \"ID\": 0,\n        \"description\": \"\\\\9+a\"\n      },\n      \"IsOpenDataLicensed\": true,\n      \"IsApprovedImport\": true,\n      \"License\": \"Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)\",\n      \"DateLastImported\": \"2020-02-04T23:09:00Z\",\n      \"Title\": \"Open Charge Map Contributors\"\n    }\n  ],\n  \"DataTypes\": \"\",\n  \"MetadataGroups\": \"string\",\n  \"Operators\": [\n    {\n      \"ID\": 177,\n      \"WebsiteURL\": \"http://www.pod-point.com/\",\n      \"Comments\": \"string\",\n      \"PhonePrimaryContact\": null,\n      \"PhoneSecondaryContact\": null,\n      \"IsPrivateIndividual\": false,\n      \"AddressInfo\": {\n        \"ID\": 148879,\n        \"CountryID\": 1,\n        \"Latitude\": 52.343197,\n        \"Longitude\": -0.170632,\n        \"AddressLine1\": \"Buttsgrove Way\",\n        \"AddressLine2\": null,\n        \"Town\": \"Huntingdon\",\n        \"StateOrProvince\": \"string\",\n        \"Postcode\": \"PE29 1PE\",\n        \"Country\": {\n          \"ID\": 1,\n          \"ISOCode\": \"GB\",\n          \"ContinentCode\": \"EU\",\n          \"Title\": \"United Kingdom\"\n        },\n        \"ContactTelephone1\": null,\n        \"ContactTelephone2\": null,\n        \"ContactEmail\": \"string\",\n        \"AccessComments\": \"string\",\n        \"RelatedURL\": null,\n        \"Distance\": null,\n        \"DistanceUnit\": 1,\n        \"Title\": \"string\"\n      },\n      \"BookingURL\": \"string\",\n      \"ContactEmail\": \"enquiries@pod-point.com\",\n      \"FaultReportEmail\": \"enquiries@pod-point.com\",\n      \"IsRestrictedEdit\": true,\n      \"Title\": \"POD Point (UK)\"\n    },\n    {\n      \"ID\": 3146,\n      \"WebsiteURL\": \"http://www.pod-point.com/\",\n      \"Comments\": \"string\",\n      \"PhonePrimaryContact\": null,\n      \"PhoneSecondaryContact\": null,\n      \"IsPrivateIndividual\": false,\n      \"AddressInfo\": {\n        \"ID\": 148879,\n        \"CountryID\": 1,\n        \"Latitude\": 52.343197,\n        \"Longitude\": -0.170632,\n        \"AddressLine1\": \"Buttsgrove Way\",\n        \"AddressLine2\": null,\n        \"Town\": \"Huntingdon\",\n        \"StateOrProvince\": \"string\",\n        \"Postcode\": \"PE29 1PE\",\n        \"Country\": {\n          \"ID\": 1,\n          \"ISOCode\": \"GB\",\n          \"ContinentCode\": \"EU\",\n          \"Title\": \"United Kingdom\"\n        },\n        \"ContactTelephone1\": null,\n        \"ContactTelephone2\": null,\n        \"ContactEmail\": \"string\",\n        \"AccessComments\": \"string\",\n        \"RelatedURL\": null,\n        \"Distance\": null,\n        \"DistanceUnit\": 1,\n        \"Title\": \"string\"\n      },\n      \"BookingURL\": \"string\",\n      \"ContactEmail\": \"enquiries@pod-point.com\",\n      \"FaultReportEmail\": \"enquiries@pod-point.com\",\n      \"IsRestrictedEdit\": false,\n      \"Title\": \"POD Point (UK)\"\n    }\n  ],\n  \"StatusTypes\": [\n    {\n      \"IsOperational\": true,\n      \"IsUserSelectable\": true,\n      \"ID\": 50,\n      \"Title\": \"Operational\"\n    },\n    {\n      \"IsOperational\": true,\n      \"IsUserSelectable\": true,\n      \"ID\": 50,\n      \"Title\": \"Operational\"\n    }\n  ],\n  \"SubmissionStatusTypes\": [\n    {\n      \"ID\": 200,\n      \"IsLive\": false,\n      \"Title\": \"string\"\n    },\n    {\n      \"ID\": 200,\n      \"IsLive\": false,\n      \"Title\": \"string\"\n    }\n  ],\n  \"UsageTypes\": [\n    {\n      \"IsPayAtLocation\": false,\n      \"IsMembershipRequired\": false,\n      \"IsAccessKeyRequired\": true,\n      \"ID\": 4287,\n      \"Title\": \"Public - Membership Required\"\n    },\n    {\n      \"IsPayAtLocation\": true,\n      \"IsMembershipRequired\": false,\n      \"IsAccessKeyRequired\": false,\n      \"ID\": 2334,\n      \"Title\": \"Public - Membership Required\"\n    }\n  ],\n  \"UserCommentTypes\": [\n    {\n      \"ID\": 8356,\n      \"Title\": \"string\"\n    },\n    {\n      \"ID\": 3006,\n      \"Title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openchargemap.io/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cf9acec7-c7e2-4d5c-9d22-55d2796cceba",
+    "name": "Open Charge Map Comment Referencedata API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Open Charge Map API provides access to the worlds largest registry of charging locations as Open Data. You can integrate this API into your own apps or services and export charging location data into your own systems. \n\n**To obtain a free API key Sign In to https://openchargemap.org and choose 'my apps' from the `my profile` menu, then select `Register An Application` to get your API key.**\n\nTo retrieve site (POI) data, see the `/poi` endpoint. To fetch general lookup information such as connector types, network operators etc, use the `/referencedata` endpoint.\n\n**Use of the OCM API is subject to terms and conditions. By using the API you indicate acceptance of these terms.**\n\nIf you wish to export charging location data into your own systems or applications the most flexible way is to use our API, which provides an export in a variety of formats. If you wish to regularly refresh the entire dataset, please clone our data from GitHub. You can also opt to run your own private API mirror.\n\n### Fair Usage Policy\nThe basic API is provided as a free service with no warranty or service level agreement. Providing this API to you costs us actual money for server resources and data transfer fees.\n\nYou must provide your API key as an `X-API-Key header` (case sensitive) or set the `key=YourAPIKey` url parameter. You should also set your http user-agent to a custom value to help identify your app.\n\n\n\n*Do not repeatedly call the API with duplicate queries. Debounce/throttle your API requests to minimise the work our API has to do. The API administrator (Open Charge Map) reserves the right to ban API callers (including automated banning) if callers make excessive/indescriminate use of the API, at the discretion of the OCM administrator.*\n\nIf you need to make a high volume of queries against the API please host your own API mirror or import the data into your own API.\n\n### Example API Calls\nReturn charging location information for the US in JSON format, limited to the first 10 results: `https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=10?key=<your key>`\n\nThe default output contains a lot of information. Here is the same call as above, but with the most compact output (formatting removed, reference data as IDs instead of full objects, null fields skipped): \n`https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=100&compact=true&verbose=false&key=<your key>`\n\nReturn KML format results suitable for viewing in google earth/maps etc (UK, max 500 locations): `https://api.openchargemap.io/v3/poi/?output=kml&countrycode=GB&maxresults=500&key=<your key>`\n\nData returned by the API has mixed licensing and applicable copyright attribution (included in results as \"Data Provider\"). If you require Open licensed data you currently must filter by opendata=true to return data marked specifically with Open Data licenses.\n\n### Linking to OCM\nIn addition to using our  API you can link directly to specific Open Charge Map URLs in order to perform specific actions, with {OCM-ID} is the numeric ID of the POI to add work with.\n\n* Add a New POI:\t`https://openchargemap.org/site/poi/add`\n* View POI Details: `https://openchargemap.org/site/poi/details/{OCM-ID}`\n* Add a Comment/Check-In to an existing POI: \t`https://openchargemap.org/site/poi/addcomment/{OCM-ID}` \n* Add a Photo to an existing POI:\t`https://openchargemap.org/site/poi/addmediaitem/{OCM-ID}`\n\nContact Support:\n Name: Contact",
+      "type": "text/plain"
+    }
+  }
+}

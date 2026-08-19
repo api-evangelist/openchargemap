@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Charge Map Comment Referencedata API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Referencedata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Core Reference Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openchargemap.io/v3/referencedata",
+            "params": [
+              {
+                "name": "countryid",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter on countryid, exact match on a given numeric country id (comma separated list)"
+              }
+            ]
+          },
+          "docs": "Returns the core reference data used for looking up IDs such as Connection Types, Operators, Countries etc. \n\nThis information is useful for UIs such as editing systems or for fetching results in the lighter non-verbose mode, then hydrating POI results back into complex objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

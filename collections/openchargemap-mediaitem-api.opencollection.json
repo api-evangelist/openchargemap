@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Charge Map Comment Mediaitem API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mediaitem",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add Media Item (Photo)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openchargemap.io/v3/mediaitem",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit a photo for a specific charging location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

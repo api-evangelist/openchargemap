@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Charge Map Comment Poi API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Poi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve POI list (sites)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openchargemap.io/v3/poi",
+            "params": [
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Optional output format `json`,`geojson`,`xml`,`csv`, JSON is the default and recommended as the highest fidelity."
+              },
+              {
+                "name": "client",
+                "value": "",
+                "type": "query",
+                "description": "String to identify your client application. Optional but recommended to distinguish your client from other bots/crawlers"
+              },
+              {
+                "name": "maxresults",
+                "value": "",
+                "type": "query",
+                "description": "Limit on max number of results returned"
+              },
+              {
+                "name": "countrycode",
+                "value": "",
+                "type": "query",
+                "description": "2-character ISO Country code to filter to one specific country"
+              },
+              {
+                "name": "countryid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given numeric country id (comma separated list)"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for distance calculation and filtering"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for distance calculation and filtering"
+              },
+              {
+                "name": "distance",
+                "value": "",
+                "type": "query",
+                "description": "Optionally filter results by a max distance from the given latitude/longitude"
+              },
+              {
+                "name": "distanceunit",
+                "value": "",
+                "type": "query",
+                "description": "`miles` or `km` distance unit"
+              },
+              {
+                "name": "operatorid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given EVSE operator id (comma separated list)"
+              },
+              {
+                "name": "connectiontypeid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given connection type id (comma separated list)"
+              },
+              {
+                "name": "levelid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given charging level (1-3) id (comma separated list)"
+              },
+              {
+                "name": "usagetypeid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given usage type id (comma separated list)"
+              },
+              {
+                "name": "statustypeid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given status type id (comma separated list)"
+              },
+              {
+                "name": "dataproviderid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given data provider id id (comma separated list). "
+              },
+              {
+                "name": "opendata",
+                "value": "",
+                "type": "query",
+                "description": "Use opendata=true for only OCM provided (\"Open\") data."
+              },
+              {
+                "name": "includecomments",
+                "value": "",
+                "type": "query",
+                "description": "If true, user comments and media items will be include in result set"
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Set to false to get a smaller result set with null items removed."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Set to true to remove reference data objects from output (just returns IDs for common reference data such as DataProvider etc)."
+              },
+              {
+                "name": "camelcase",
+                "value": "",
+                "type": "query",
+                "description": "Set to true to get a property names in camelCase format."
+              },
+              {
+                "name": "chargepointid",
+                "value": "",
+                "type": "query",
+                "description": "Exact match on a given OCM POI ID (comma separated list)"
+              },
+              {
+                "name": "boundingbox",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a given bounding box. specify top left and bottom right box corners as: (lat,lng),(lat2,lng2)"
+              },
+              {
+                "name": "polygon",
+                "value": "",
+                "type": "query",
+                "description": "Filter results within a given Polygon. Specify an encoded polyline for the polygon shape. Polygon will be automatically closed from the last point to the first point."
+              },
+              {
+                "name": "polyline",
+                "value": "",
+                "type": "query",
+                "description": "Filter results along an encoded polyline, use with distance param to increase search distance along line. Polyline is expanded into a polygon to cover the search distance."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Default sort order is based on spatial index but you can optionally sort by  `modified_asc` for results in order of modification (oldest to newest), or ` id_asc` for results in order of ID"
+              },
+              {
+                "name": "modifiedsince",
+                "value": "",
+                "type": "query",
+                "description": "Filter to results modified after the given date"
+              },
+              {
+                "name": "greaterthanid",
+                "value": "",
+                "type": "query",
+                "description": "Filter to items with ID greater than given value"
+              }
+            ]
+          },
+          "docs": "Used to fetch a list of POIs (sites) within a geographic boundary or near a specific latitude/longitude. This is the primary method for most applications and services to consume data from Open Charge Map."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

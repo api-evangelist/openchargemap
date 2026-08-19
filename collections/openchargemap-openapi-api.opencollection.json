@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Charge Map Comment Openapi API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Openapi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve OpenAPI definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openchargemap.io/v3/openapi"
+          },
+          "docs": "Retrieve the current OpenAPI format (YAML) definition for this API. This is useful for documentation tools, mocking, testing and client generation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

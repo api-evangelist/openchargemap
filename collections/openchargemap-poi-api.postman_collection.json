@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "5bd1762b-b943-426f-adbc-f60f8ffb94c2",
+      "name": "Poi",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca0f5e11-116d-46f8-a436-3415e44f5c38",
+          "name": "Retrieve POI list (sites)",
+          "request": {
+            "name": "Retrieve POI list (sites)",
+            "description": {
+              "content": "Used to fetch a list of POIs (sites) within a geographic boundary or near a specific latitude/longitude. This is the primary method for most applications and services to consume data from Open Charge Map.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "poi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "json",
+                  "description": "Optional output format `json`,`geojson`,`xml`,`csv`, JSON is the default and recommended as the highest fidelity."
+                },
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "<string>",
+                  "description": "String to identify your client application. Optional but recommended to distinguish your client from other bots/crawlers"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxresults",
+                  "value": "100",
+                  "description": "Limit on max number of results returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "countrycode",
+                  "value": "<string>",
+                  "description": "2-character ISO Country code to filter to one specific country"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryid",
+                  "value": "<string>",
+                  "description": "Exact match on a given numeric country id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryid",
+                  "value": "<string>",
+                  "description": "Exact match on a given numeric country id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<integer>",
+                  "description": "Latitude for distance calculation and filtering"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<number>",
+                  "description": "Longitude for distance calculation and filtering"
+                },
+                {
+                  "disabled": false,
+                  "key": "distance",
+                  "value": "<number>",
+                  "description": "Optionally filter results by a max distance from the given latitude/longitude"
+                },
+                {
+                  "disabled": false,
+                  "key": "distanceunit",
+                  "value": "Miles",
+                  "description": "`miles` or `km` distance unit"
+                },
+                {
+                  "disabled": false,
+                  "key": "operatorid",
+                  "value": "<array>",
+                  "description": "Exact match on a given EVSE operator id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "connectiontypeid",
+                  "value": "<array>",
+                  "description": "Exact match on a given connection type id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "levelid",
+                  "value": "<array>",
+                  "description": "Exact match on a given charging level (1-3) id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "usagetypeid",
+                  "value": "<array>",
+                  "description": "Exact match on a given usage type id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "statustypeid",
+                  "value": "<array>",
+                  "description": "Exact match on a given status type id (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataproviderid",
+                  "value": "<array>",
+                  "description": "Exact match on a given data provider id id (comma separated list). "
+                },
+                {
+                  "disabled": false,
+                  "key": "opendata",
+                  "value": "<boolean>",
+                  "description": "Use opendata=true for only OCM provided (\"Open\") data."
+                },
+                {
+                  "disabled": false,
+                  "key": "includecomments",
+                  "value": "false",
+                  "description": "If true, user comments and media items will be include in result set"
+                },
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "true",
+                  "description": "Set to false to get a smaller result set with null items removed."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "false",
+                  "description": "Set to true to remove reference data objects from output (just returns IDs for common reference data such as DataProvider etc)."
+                },
+                {
+                  "disabled": false,
+                  "key": "camelcase",
+                  "value": "false",
+                  "description": "Set to true to get a property names in camelCase format."
+                },
+                {
+                  "disabled": false,
+                  "key": "chargepointid",
+                  "value": "<string>",
+                  "description": "Exact match on a given OCM POI ID (comma separated list)"
+                },
+                {
+                  "disabled": false,
+                  "key": "boundingbox",
+                  "value": "<array>",
+                  "description": "Filter results to a given bounding box. specify top left and bottom right box corners as: (lat,lng),(lat2,lng2)"
+                },
+                {
+                  "disabled": false,
+                  "key": "polygon",
+                  "value": "<string>",
+                  "description": "Filter results within a given Polygon. Specify an encoded polyline for the polygon shape. Polygon will be automatically closed from the last point to the first point."
+                },
+                {
+                  "disabled": false,
+                  "key": "polyline",
+                  "value": "<string>",
+                  "description": "Filter results along an encoded polyline, use with distance param to increase search distance along line. Polyline is expanded into a polygon to cover the search distance."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Default sort order is based on spatial index but you can optionally sort by  `modified_asc` for results in order of modification (oldest to newest), or ` id_asc` for results in order of ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "modifiedsince",
+                  "value": "<string>",
+                  "description": "Filter to results modified after the given date"
+                },
+                {
+                  "disabled": false,
+                  "key": "greaterthanid",
+                  "value": "<string>",
+                  "description": "Filter to items with ID greater than given value"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd688a88-482a-44aa-9cb2-967ce8da6c94",
+              "name": "List of POIs (sites) with associated equipment summary information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "key": "countrycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "distance",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "distanceunit",
+                      "value": "Miles"
+                    },
+                    {
+                      "key": "operatorid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "connectiontypeid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "levelid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "usagetypeid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "statustypeid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "dataproviderid",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "opendata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includecomments",
+                      "value": "false"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": "true"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "false"
+                    },
+                    {
+                      "key": "camelcase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "chargepointid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "boundingbox",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "polygon",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "polyline",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modifiedsince",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "greaterthanid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Example Results\": [\n    {\n      \"DataProvider\": {\n        \"WebsiteURL\": \"http://openchargemap.org\",\n        \"Comments\": null,\n        \"DataProviderStatusType\": {\n          \"IsProviderEnabled\": true,\n          \"ID\": 1,\n          \"description\": \"Manual Data Entry\"\n        },\n        \"IsRestrictedEdit\": false,\n        \"IsOpenDataLicensed\": true,\n        \"IsApprovedImport\": true,\n        \"License\": \"Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)\",\n        \"DateLastImported\": null,\n        \"ID\": 1,\n        \"description\": \"Open Charge Map Contributors\"\n      },\n      \"OperatorInfo\": {\n        \"WebsiteURL\": \"https://www.afconev.co.il/\",\n        \"Comments\": null,\n        \"PhonePrimaryContact\": null,\n        \"PhoneSecondaryContact\": null,\n        \"IsPrivateIndividual\": false,\n        \"AddressInfo\": null,\n        \"BookingURL\": null,\n        \"ContactEmail\": null,\n        \"FaultReportEmail\": null,\n        \"IsRestrictedEdit\": false,\n        \"ID\": 3435,\n        \"description\": \"Afcon (Israel)\"\n      },\n      \"UsageType\": {\n        \"IsPayAtLocation\": false,\n        \"IsMembershipRequired\": true,\n        \"IsAccessKeyRequired\": true,\n        \"ID\": 4,\n        \"description\": \"Public - Membership Required\"\n      },\n      \"StatusType\": {\n        \"IsOperational\": true,\n        \"IsUserSelectable\": true,\n        \"ID\": 50,\n        \"description\": \"Operational\"\n      },\n      \"SubmissionStatus\": {\n        \"IsLive\": true,\n        \"ID\": 200,\n        \"description\": \"Submission Published\"\n      },\n      \"UserComments\": null,\n      \"PercentageSimilarity\": null,\n      \"MediaItems\": null,\n      \"IsRecentlyVerified\": true,\n      \"DateLastVerified\": \"2021-11-07T16:36:00Z\",\n      \"ID\": 189853,\n      \"UUID\": \"1686CE5C-95E8-450B-93C3-95D1B1AF98D4\",\n      \"ParentChargePointID\": null,\n      \"DataProviderID\": 1,\n      \"DataProvidersReference\": null,\n      \"OperatorID\": 3435,\n      \"OperatorsReference\": null,\n      \"UsageTypeID\": 4,\n      \"UsageCost\": null,\n      \"AddressInfo\": {\n        \"ID\": 190212,\n        \"description\": \"בית משה\",\n        \"AddressLine1\": \"כצנלסון 10\",\n        \"AddressLine2\": null,\n        \"Town\": \"Ashkelon\",\n        \"StateOrProvince\": \"South District\",\n        \"Postcode\": \"78100\",\n        \"CountryID\": 111,\n        \"Country\": {\n          \"ISOCode\": \"IL\",\n          \"ContinentCode\": \"AS\",\n          \"ID\": 111,\n          \"description\": \"Israel\"\n        },\n        \"Latitude\": 31.66148706692408,\n        \"Longitude\": 34.587748089749425,\n        \"ContactTelephone1\": null,\n        \"ContactTelephone2\": null,\n        \"ContactEmail\": null,\n        \"AccessComments\": null,\n        \"RelatedURL\": \"https://account.afconev.co.il/findCharger?31.6615343,34.5873913,20z,%D7%9B%D7%A6%D7%A0%D7%9C%D7%A1%D7%95%D7%9F%2010%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F,494si\",\n        \"Distance\": null,\n        \"DistanceUnit\": 0\n      },\n      \"Connections\": [\n        {\n          \"ID\": 307235,\n          \"ConnectionTypeID\": 25,\n          \"ConnectionType\": {\n            \"FormalName\": \"IEC 62196-2 Type 2\",\n            \"IsDiscontinued\": false,\n            \"IsObsolete\": false,\n            \"ID\": 25,\n            \"description\": \"Type 2 (Socket Only)\"\n          },\n          \"Reference\": null,\n          \"StatusTypeID\": 50,\n          \"StatusType\": {\n            \"IsOperational\": true,\n            \"IsUserSelectable\": true,\n            \"ID\": 50,\n            \"description\": \"Operational\"\n          },\n          \"LevelID\": 2,\n          \"Level\": {\n            \"Comments\": \"Over 2 kW, usually non-domestic socket type\",\n            \"IsFastChargeCapable\": false,\n            \"ID\": 2,\n            \"description\": \"Level 2 : Medium (Over 2kW)\"\n          },\n          \"Amps\": null,\n          \"Voltage\": null,\n          \"PowerKW\": 22,\n          \"CurrentTypeID\": 20,\n          \"CurrentType\": {\n            \"Description\": \"Alternating Current - Three Phase\",\n            \"ID\": 20,\n            \"description\": \"AC (Three-Phase)\"\n          },\n          \"Quantity\": 3,\n          \"Comments\": null\n        },\n        {\n          \"ID\": 307236,\n          \"ConnectionTypeID\": 33,\n          \"ConnectionType\": {\n            \"FormalName\": \"IEC 62196-3 Configuration FF\",\n            \"IsDiscontinued\": false,\n            \"IsObsolete\": false,\n            \"ID\": 33,\n            \"description\": \"CCS (Type 2)\"\n          },\n          \"Reference\": null,\n          \"StatusTypeID\": 50,\n          \"StatusType\": {\n            \"IsOperational\": true,\n            \"IsUserSelectable\": true,\n            \"ID\": 50,\n            \"description\": \"Operational\"\n          },\n          \"LevelID\": 3,\n          \"Level\": {\n            \"Comments\": \"40KW and Higher\",\n            \"IsFastChargeCapable\": true,\n            \"ID\": 3,\n            \"description\": \"Level 3:  High (Over 40kW)\"\n          },\n          \"Amps\": null,\n          \"Voltage\": null,\n          \"PowerKW\": 50,\n          \"CurrentTypeID\": 30,\n          \"CurrentType\": {\n            \"Description\": \"Direct Current\",\n            \"ID\": 30,\n            \"description\": \"DC\"\n          },\n          \"Quantity\": 1,\n          \"Comments\": null\n        }\n      ],\n      \"NumberOfPoints\": 4,\n      \"GeneralComments\": null,\n      \"DatePlanned\": null,\n      \"DateLastConfirmed\": null,\n      \"StatusTypeID\": 50,\n      \"DateLastStatusUpdate\": \"2021-11-07T16:36:00Z\",\n      \"MetadataValues\": null,\n      \"DataQualityLevel\": 1,\n      \"DateCreated\": \"2021-11-07T16:36:00Z\",\n      \"SubmissionStatusTypeID\": 200\n    },\n    {\n      \"ID\": 148527,\n      \"UUID\": \"4C524AA1-3413-4D56-804C-480304FEB0FB\",\n      \"UserComments\": [\n        {\n          \"ID\": \"string\",\n          \"ChargePointID\": 0,\n          \"CommentTypeID\": 0,\n          \"CommentType\": {\n            \"ID\": 0,\n            \"Title\": \"string\"\n          },\n          \"UserName\": \"string\",\n          \"Comment\": \"string\",\n          \"RelatedURL\": \"string\",\n          \"DateCreated\": \"2019-08-24T14:15:22Z\",\n          \"User\": {\n            \"ID\": 0,\n            \"Username\": \"string\",\n            \"ReputationPoints\": 0,\n            \"ProfileImageURL\": \"string\"\n          },\n          \"CheckinStatusTypeID\": 0,\n          \"CheckinStatusType\": {\n            \"ID\": 0,\n            \"Title\": \"string\",\n            \"IsAutomatedCheckin\": true,\n            \"IsPositive\": true\n          }\n        }\n      ],\n      \"MediaItems\": [\n        {\n          \"ID\": \"string\",\n          \"ChargePointID\": \"string\",\n          \"ItemURL\": \"string\",\n          \"ItemThumbnailURL\": \"string\",\n          \"Comment\": \"string\",\n          \"IsEnabled\": true,\n          \"IsVideo\": true,\n          \"IsFeaturedItem\": true,\n          \"IsExternalResource\": true,\n          \"User\": {\n            \"ID\": 0,\n            \"Username\": \"string\",\n            \"ReputationPoints\": 0,\n            \"ProfileImageURL\": \"string\"\n          },\n          \"DateCreated\": \"string\"\n        }\n      ],\n      \"IsRecentlyVerified\": true,\n      \"DateLastVerified\": \"2020-02-04T06:33:00Z\",\n      \"ParentChargePointID\": 0,\n      \"DataProviderID\": 1,\n      \"DataProvidersReference\": \"string\",\n      \"OperatorID\": 3,\n      \"OperatorsReference\": \"PG-84306\",\n      \"UsageTypeID\": 4,\n      \"UsageCost\": \"See network operators app for current charges\",\n      \"AddressInfo\": {\n        \"ID\": 148879,\n        \"AddressLine1\": \"Buttsgrove Way\",\n        \"AddressLine2\": null,\n        \"Town\": \"Huntingdon\",\n        \"StateOrProvince\": \"string\",\n        \"Postcode\": \"PE29 1PE\",\n        \"CountryID\": 1,\n        \"Country\": {\n          \"ID\": 1,\n          \"ISOCode\": \"GB\",\n          \"ContinentCode\": \"EU\",\n          \"Title\": \"United Kingdom\"\n        },\n        \"Latitude\": 52.343197,\n        \"Longitude\": -0.170632,\n        \"ContactTelephone1\": null,\n        \"ContactTelephone2\": null,\n        \"ContactEmail\": \"string\",\n        \"AccessComments\": \"string\",\n        \"RelatedURL\": null,\n        \"Distance\": null,\n        \"DistanceUnit\": 1,\n        \"Title\": \"string\"\n      },\n      \"Connections\": [\n        {\n          \"ID\": 206241,\n          \"ConnectionTypeID\": 25,\n          \"ConnectionType\": {\n            \"FormalName\": \"IEC 62196-2 Type 2\",\n            \"IsDiscontinued\": false,\n            \"IsObsolete\": false,\n            \"ID\": 25,\n            \"Title\": \"Type 2 (Socket Only)\"\n          },\n          \"Reference\": null,\n          \"StatusTypeID\": 50,\n          \"StatusType\": {\n            \"IsOperational\": true,\n            \"IsUserSelectable\": true,\n            \"ID\": 50,\n            \"Title\": \"Operational\"\n          },\n          \"LevelID\": 2,\n          \"Level\": {\n            \"ID\": 2,\n            \"Title\": \"Level 2 : Medium (Over 2kW)\",\n            \"Comments\": \"Over 2 kW, usually non-domestic socket type\",\n            \"IsFastChargeCapable\": true\n          },\n          \"Amps\": 32,\n          \"Voltage\": 230,\n          \"PowerKW\": 7.4,\n          \"CurrentTypeID\": 10,\n          \"CurrentType\": {\n            \"ID\": 10,\n            \"Title\": \"AC (Single-Phase)\"\n          },\n          \"Quantity\": 2,\n          \"Comments\": \"string\"\n        }\n      ],\n      \"NumberOfPoints\": 2,\n      \"GeneralComments\": \"This is an open charge unit installed at the Coneygear Centre at Buttsgrove Way, Huntingdon\",\n      \"DatePlanned\": \"2020-02-04T06:33:00Z\",\n      \"DateLastConfirmed\": \"2020-02-04T06:33:00Z\",\n      \"StatusTypeID\": 50,\n      \"DateLastStatusUpdate\": \"2020-02-04T06:33:00Z\",\n      \"MetadataValues\": [\n        null\n      ],\n      \"DataQualityLevel\": 5,\n      \"DateCreated\": \"2020-02-04T06:33:00Z\",\n      \"SubmissionStatusTypeID\": 200,\n      \"DataProvider\": {\n        \"WebsiteURL\": \"https://openchargemap.org\",\n        \"Comments\": \"string\",\n        \"DataProviderStatusType\": {\n          \"IsProviderEnabled\": true,\n          \"ID\": [\n            1\n          ],\n          \"description\": [\n            \"Manual Data Entry\"\n          ]\n        },\n        \"IsRestrictedEdit\": false,\n        \"IsOpenDataLicensed\": \"null - true\",\n        \"IsApprovedImport\": \"null - true\",\n        \"License\": \"Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)\",\n        \"DateLastImported\": \"null - '2020-02-04T23:09:00Z'\",\n        \"ID\": 1,\n        \"Title\": \"Open Charge Map Contributors\"\n      },\n      \"OperatorInfo\": {\n        \"WebsiteURL\": \"http://www.pod-point.com/\",\n        \"Comments\": null,\n        \"PhonePrimaryContact\": null,\n        \"PhoneSecondaryContact\": null,\n        \"IsPrivateIndividual\": false,\n        \"AddressInfo\": {\n          \"ID\": 148879,\n          \"AddressLine1\": \"Buttsgrove Way\",\n          \"AddressLine2\": null,\n          \"Town\": \"Huntingdon\",\n          \"StateOrProvince\": \"string\",\n          \"Postcode\": \"PE29 1PE\",\n          \"CountryID\": 1,\n          \"Country\": {\n            \"ID\": 1,\n            \"ISOCode\": \"GB\",\n            \"ContinentCode\": \"EU\",\n            \"Title\": \"United Kingdom\"\n          },\n          \"Latitude\": 52.343197,\n          \"Longitude\": -0.170632,\n          \"ContactTelephone1\": null,\n          \"ContactTelephone2\": null,\n          \"ContactEmail\": \"string\",\n          \"AccessComments\": \"string\",\n          \"RelatedURL\": null,\n          \"Distance\": null,\n          \"DistanceUnit\": 1,\n          \"Title\": \"string\"\n        },\n        \"BookingURL\": \"string\",\n        \"ContactEmail\": \"enquiries@pod-point.com\",\n        \"FaultReportEmail\": \"enquiries@pod-point.com\",\n        \"IsRestrictedEdit\": true,\n        \"ID\": 0,\n        \"Title\": \"POD Point (UK)\"\n      },\n      \"UsageType\": {\n        \"IsPayAtLocation\": true,\n        \"IsMembershipRequired\": true,\n        \"IsAccessKeyRequired\": true,\n        \"ID\": 0,\n        \"Title\": \"Public - Membership Required\"\n      },\n      \"StatusType\": {\n        \"IsOperational\": true,\n        \"IsUserSelectable\": true,\n        \"ID\": 50,\n        \"Title\": \"Operational\"\n      },\n      \"SubmissionStatus\": {\n        \"ID\": 200,\n        \"Title\": \"string\",\n        \"IsLive\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openchargemap.io/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "13c6b183-4576-4cbb-acc8-76a1f3be7f92",
+    "name": "Open Charge Map Comment Poi API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Open Charge Map API provides access to the worlds largest registry of charging locations as Open Data. You can integrate this API into your own apps or services and export charging location data into your own systems. \n\n**To obtain a free API key Sign In to https://openchargemap.org and choose 'my apps' from the `my profile` menu, then select `Register An Application` to get your API key.**\n\nTo retrieve site (POI) data, see the `/poi` endpoint. To fetch general lookup information such as connector types, network operators etc, use the `/referencedata` endpoint.\n\n**Use of the OCM API is subject to terms and conditions. By using the API you indicate acceptance of these terms.**\n\nIf you wish to export charging location data into your own systems or applications the most flexible way is to use our API, which provides an export in a variety of formats. If you wish to regularly refresh the entire dataset, please clone our data from GitHub. You can also opt to run your own private API mirror.\n\n### Fair Usage Policy\nThe basic API is provided as a free service with no warranty or service level agreement. Providing this API to you costs us actual money for server resources and data transfer fees.\n\nYou must provide your API key as an `X-API-Key header` (case sensitive) or set the `key=YourAPIKey` url parameter. You should also set your http user-agent to a custom value to help identify your app.\n\n\n\n*Do not repeatedly call the API with duplicate queries. Debounce/throttle your API requests to minimise the work our API has to do. The API administrator (Open Charge Map) reserves the right to ban API callers (including automated banning) if callers make excessive/indescriminate use of the API, at the discretion of the OCM administrator.*\n\nIf you need to make a high volume of queries against the API please host your own API mirror or import the data into your own API.\n\n### Example API Calls\nReturn charging location information for the US in JSON format, limited to the first 10 results: `https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=10?key=<your key>`\n\nThe default output contains a lot of information. Here is the same call as above, but with the most compact output (formatting removed, reference data as IDs instead of full objects, null fields skipped): \n`https://api.openchargemap.io/v3/poi/?output=json&countrycode=US&maxresults=100&compact=true&verbose=false&key=<your key>`\n\nReturn KML format results suitable for viewing in google earth/maps etc (UK, max 500 locations): `https://api.openchargemap.io/v3/poi/?output=kml&countrycode=GB&maxresults=500&key=<your key>`\n\nData returned by the API has mixed licensing and applicable copyright attribution (included in results as \"Data Provider\"). If you require Open licensed data you currently must filter by opendata=true to return data marked specifically with Open Data licenses.\n\n### Linking to OCM\nIn addition to using our  API you can link directly to specific Open Charge Map URLs in order to perform specific actions, with {OCM-ID} is the numeric ID of the POI to add work with.\n\n* Add a New POI:\t`https://openchargemap.org/site/poi/add`\n* View POI Details: `https://openchargemap.org/site/poi/details/{OCM-ID}`\n* Add a Comment/Check-In to an existing POI: \t`https://openchargemap.org/site/poi/addcomment/{OCM-ID}` \n* Add a Photo to an existing POI:\t`https://openchargemap.org/site/poi/addmediaitem/{OCM-ID}`\n\nContact Support:\n Name: Contact",
+      "type": "text/plain"
+    }
+  }
+}
