@@ -124,6 +124,8 @@ apis:
   humanURL: https://openchargemap.org/site/develop/api
   baseURL: https://api.openchargemap.io/v3
   tags:
+  - OpenAPI
+  tags_raw:
   - Openapi
   properties:
   - type: OpenAPI
@@ -134,6 +136,8 @@ apis:
   humanURL: https://openchargemap.org/site/develop/api
   baseURL: https://api.openchargemap.io/v3
   tags:
+  - POI
+  tags_raw:
   - Poi
   properties:
   - type: OpenAPI
@@ -154,6 +158,8 @@ apis:
   humanURL: https://openchargemap.org/site/develop/api
   baseURL: https://api.openchargemap.io/v3
   tags:
+  - Reference Data
+  tags_raw:
   - Referencedata
   properties:
   - type: OpenAPI
