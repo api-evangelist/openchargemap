@@ -12,6 +12,18 @@ description: >
   operational status. The API is free to use with an API key registration and supports both
   read (GET) and write (POST) operations for contributing new charging location data.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
