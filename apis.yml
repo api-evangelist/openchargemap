@@ -131,18 +131,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/openchargemap-mediaitem-api-openapi.yml
-- aid: openchargemap:openchargemap-openapi-api
-  name: Open Charge Map Openapi API
-  description: The Openapi API from Open Charge Map — 1 operation(s) for openapi.
-  humanURL: https://openchargemap.org/site/develop/api
-  baseURL: https://api.openchargemap.io/v3
-  tags:
-  - OpenAPI
-  tags_raw:
-  - Openapi
-  properties:
-  - type: OpenAPI
-    url: openapi/openchargemap-openapi-api-openapi.yml
 - aid: openchargemap:openchargemap-poi-api
   name: Open Charge Map Poi API
   description: The Poi API from Open Charge Map — 1 operation(s) for poi.
@@ -165,18 +153,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/openchargemap-profile-api-openapi.yml
-- aid: openchargemap:openchargemap-referencedata-api
-  name: Open Charge Map Referencedata API
-  description: The Referencedata API from Open Charge Map — 1 operation(s) for referencedata.
+- aid: openchargemap:openchargemap-open-api-api
+  name: Open Charge Map Open API
+  description: The Open API API from Open Charge Map — 1 operation(s) for open api.
+  humanURL: https://openchargemap.org/site/develop/api
+  baseURL: https://api.openchargemap.io/v3
+  tags:
+  - Open API
+  properties:
+  - type: OpenAPI
+    url: openapi/openchargemap-open-api-api-openapi.yml
+- aid: openchargemap:openchargemap-reference-data-api
+  name: Open Charge Map Reference Data API
+  description: The Reference Data API from Open Charge Map — 1 operation(s) for reference data.
   humanURL: https://openchargemap.org/site/develop/api
   baseURL: https://api.openchargemap.io/v3
   tags:
   - Reference Data
-  tags_raw:
-  - Referencedata
   properties:
   - type: OpenAPI
-    url: openapi/openchargemap-referencedata-api-openapi.yml
+    url: openapi/openchargemap-reference-data-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/openchargemap-agentic-access.yml
