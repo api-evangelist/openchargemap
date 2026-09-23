@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Open Charge Map Openapi API
+  version: '3.1'
+  termsOfService: https://openchargemap.org/site/about/terms
+  contact:
+    name: Contact
+    url: https://openchargemap.org/site/about
+  description: The Open Charge Map API provides access to the worlds largest registry of charging locations as Open Data.
+servers:
+- url: https://api.openchargemap.io/v3
+  description: API Base URL
+security:
+- APIKeyQueryString: []
+- APIKeyHeader: []
+tags:
+- name: Open API
+paths:
+  /openapi:
+    get:
+      summary: Retrieve OpenAPI definition
+      tags:
+      - Open API
+      operationId: get-openapi
+      description: Retrieve the current OpenAPI format (YAML) definition for this API. This is useful for documentation tools, mocking, testing and client generation.
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                example-response:
+                  value:
+                    openapi: 3.0.3
+                    info:
+                      title: Open Charge Map API
+                      version: '3.0'
+components:
+  securitySchemes:
+    APIKeyQueryString:
+      name: key
+      type: apiKey
+      in: query
+      description: API Key supplied as query string parameter
+    APIKeyHeader:
+      name: X-API-Key
+      type: apiKey
+      in: header
+    UserAuthentication:
+      type: http
+      scheme: bearer

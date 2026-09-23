@@ -1,12 +1,7 @@
 {
   "provider": "openchargemap",
   "sources": [
-    "openchargemap-comment-api-openapi.yml",
-    "openchargemap-mediaitem-api-openapi.yml",
-    "openchargemap-openapi-api-openapi.yml",
-    "openchargemap-poi-api-openapi.yml",
-    "openchargemap-profile-api-openapi.yml",
-    "openchargemap-referencedata-api-openapi.yml"
+    "_original/openapi.yaml"
   ],
   "outputs": [
     "openchargemap-comment-api-openapi.yml",
@@ -16,9 +11,35 @@
     "openchargemap-profile-api-openapi.yml",
     "openchargemap-referencedata-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yaml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openapi.yaml: tagged paths GET /poi -> Poi",
+    "openapi.yaml: tagged paths GET /referencedata -> Referencedata",
+    "openapi.yaml: tagged paths POST /profile/authenticate -> Profile",
+    "openapi.yaml: tagged paths POST /comment -> Comment",
+    "openapi.yaml: tagged paths POST /mediaitem -> Mediaitem",
+    "openapi.yaml: tagged paths GET /openapi -> Openapi",
+    "openapi.yaml: declared missing tag: Comment",
+    "openapi.yaml: declared missing tag: Mediaitem",
+    "openapi.yaml: declared missing tag: Openapi",
+    "openapi.yaml: declared missing tag: Poi",
+    "openapi.yaml: declared missing tag: Profile",
+    "openapi.yaml: declared missing tag: Referencedata",
+    "superseded outputs removed: openchargemap-open-api-api-openapi.yml, openchargemap-reference-data-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 9 total)"
+  ],
+  "skipped": [
+    "openchargemap-comment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openchargemap-mediaitem-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openchargemap-open-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openchargemap-poi-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openchargemap-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openchargemap-reference-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
