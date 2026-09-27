@@ -42,6 +42,91 @@ paths:
         name: countryid
 components:
   schemas:
+    Country:
+      type: object
+      description: Country details
+      properties:
+        ID:
+          type: integer
+          description: The Id Schema
+          default: 0
+          example: 1
+        ISOCode:
+          type: string
+          description: The Isocode Schema
+          default: ''
+          example: GB
+          pattern: ^(.*)$
+        ContinentCode:
+          type: string
+          description: The Continentcode Schema
+          default: ''
+          example: EU
+          pattern: ^(.*)$
+        Title:
+          type: string
+          description: The Title Schema
+          default: ''
+          example: United Kingdom
+          pattern: ^(.*)$
+      required:
+      - ID
+      - ISOCode
+      - ContinentCode
+    OperatorInfo:
+      type: object
+      description: An Operator is the public organisation which controls a network of charging points.
+      properties:
+        WebsiteURL:
+          type: string
+          description: Website for more information about this network
+          example: http://www.pod-point.com/
+          pattern: ^(.*)$
+        Comments:
+          type: string
+          example: null
+        PhonePrimaryContact:
+          type: string
+          description: Primary contact number for network users
+          default: null
+        PhoneSecondaryContact:
+          type: string
+          description: Secondary contact number
+          default: null
+          pattern: ^(.*)$
+        IsPrivateIndividual:
+          type: boolean
+          description: If true, this operator represents a private individual
+          deprecated: true
+          default: false
+          example: false
+        AddressInfo:
+          $ref: '#/components/schemas/AddressInfo'
+        BookingURL:
+          type: string
+        ContactEmail:
+          type: string
+          default: ''
+          example: enquiries@pod-point.com
+          pattern: ^(.*)$
+        FaultReportEmail:
+          type: string
+          description: Used to send automated notification to network operator if a user submits a fault report comment/check-in
+          example: enquiries@pod-point.com
+          pattern: ^(.*)$
+        IsRestrictedEdit:
+          type: boolean
+          description: If true, this network restricts community edits for OCM data
+        ID:
+          type: integer
+          description: Id
+        Title:
+          type: string
+          description: Title
+          example: POD Point (UK)
+          pattern: ^(.*)$
+      required:
+      - ID
     DataProvider:
       type: object
       description: A Data Provider is the controller of the source data set used to construct the details for this POI. Data has been transformed and interpreted from it's original form. Each Data Provider provides data either by an explicit license or agreement.
@@ -113,80 +198,6 @@ components:
       required:
       - IsRestrictedEdit
       - ID
-    CheckinStatusType:
-      type: object
-      description: Classification for the users comment or experience using a specific charging location.
-      properties:
-        ID:
-          type: integer
-        Title:
-          type: string
-        IsAutomatedCheckin:
-          type: boolean
-          description: If true, checkin or comment was provided by an automated system.
-        IsPositive:
-          type: boolean
-          description: If true, this type of checkin/comment is considered positive.
-      required:
-      - ID
-      - IsAutomatedCheckin
-    Country:
-      type: object
-      description: Country details
-      properties:
-        ID:
-          type: integer
-          description: The Id Schema
-          default: 0
-          example: 1
-        ISOCode:
-          type: string
-          description: The Isocode Schema
-          default: ''
-          example: GB
-          pattern: ^(.*)$
-        ContinentCode:
-          type: string
-          description: The Continentcode Schema
-          default: ''
-          example: EU
-          pattern: ^(.*)$
-        Title:
-          type: string
-          description: The Title Schema
-          default: ''
-          example: United Kingdom
-          pattern: ^(.*)$
-      required:
-      - ID
-      - ISOCode
-      - ContinentCode
-    ConnectionType:
-      type: object
-      description: The type of end-user connection an EVSE supports.
-      properties:
-        FormalName:
-          type: string
-          description: Formal (standard) name for this connection type
-          default: ''
-          example: IEC 62196-2 Type 2
-          pattern: ^(.*)$
-        IsDiscontinued:
-          type: boolean
-          description: If true, this is an discontinued but used connection type
-          default: false
-          example: false
-        IsObsolete:
-          type: boolean
-          description: If true, this is an obsolete connection type and is unlikely top be present in modern infrastructure
-          default: false
-          example: false
-        ID:
-          type: integer
-          example: 25
-        Title:
-          type: string
-          example: Type 2 (Socket Only)
     AddressInfo:
       type: object
       description: Geographic position for site and (nearest) address component information.
@@ -269,53 +280,36 @@ components:
       - CountryID
       - Latitude
       - Longitude
-    StatusType:
+    SupplyType:
       type: object
-      description: The Status Type of a site or equipment item indicates whether it is generally operational.
+      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
       properties:
-        IsOperational:
-          type: boolean
-          default: false
-          example: true
-        IsUserSelectable:
-          type: boolean
-          default: false
-          example: true
         ID:
           type: integer
-          example: 50
+          example: 10
         Title:
           type: string
-          example: Operational
+          example: AC (Single-Phase)
       required:
-      - IsOperational
-      - IsUserSelectable
       - ID
-    UsageType:
+    SubmissionStatusType:
       type: object
-      description: The Usage Type of a site indicates the general restrictions on usage.
+      description: Submission Status object, detailing the POI listing status
       properties:
-        IsPayAtLocation:
-          type: boolean
-          description: If true, usage requires paying at location
-        IsMembershipRequired:
-          type: boolean
-          description: If true, this usage type requires registration or membership with a service.
-        IsAccessKeyRequired:
-          type: boolean
-          description: If true this usage required a physical access key
-          deprecated: true
         ID:
           type: integer
+          description: Submission Status Type reference ID
+          default: 0
+          example: 200
         Title:
           type: string
-          example: Public - Membership Required
-          pattern: ^(.*)$
+        IsLive:
+          type: boolean
+          description: If true, POI listing is live (not draft or de-listed)
+          default: false
       required:
-      - IsPayAtLocation
-      - IsMembershipRequired
-      - IsAccessKeyRequired
       - ID
+      - IsLive
     CoreReferenceData:
       type: object
       description: Set of core reference data used for other API results and UI
@@ -465,59 +459,53 @@ components:
           UserCommentTypes:
           - ID: 0
             Title: string
-    OperatorInfo:
+    ConnectionType:
       type: object
-      description: An Operator is the public organisation which controls a network of charging points.
+      description: The type of end-user connection an EVSE supports.
       properties:
-        WebsiteURL:
+        FormalName:
           type: string
-          description: Website for more information about this network
-          example: http://www.pod-point.com/
+          description: Formal (standard) name for this connection type
+          default: ''
+          example: IEC 62196-2 Type 2
           pattern: ^(.*)$
-        Comments:
-          type: string
-          example: null
-        PhonePrimaryContact:
-          type: string
-          description: Primary contact number for network users
-          default: null
-        PhoneSecondaryContact:
-          type: string
-          description: Secondary contact number
-          default: null
-          pattern: ^(.*)$
-        IsPrivateIndividual:
+        IsDiscontinued:
           type: boolean
-          description: If true, this operator represents a private individual
-          deprecated: true
+          description: If true, this is an discontinued but used connection type
           default: false
           example: false
-        AddressInfo:
-          $ref: '#/components/schemas/AddressInfo'
-        BookingURL:
-          type: string
-        ContactEmail:
-          type: string
-          default: ''
-          example: enquiries@pod-point.com
-          pattern: ^(.*)$
-        FaultReportEmail:
-          type: string
-          description: Used to send automated notification to network operator if a user submits a fault report comment/check-in
-          example: enquiries@pod-point.com
-          pattern: ^(.*)$
-        IsRestrictedEdit:
+        IsObsolete:
           type: boolean
-          description: If true, this network restricts community edits for OCM data
+          description: If true, this is an obsolete connection type and is unlikely top be present in modern infrastructure
+          default: false
+          example: false
         ID:
           type: integer
-          description: Id
+          example: 25
         Title:
           type: string
-          description: Title
-          example: POD Point (UK)
-          pattern: ^(.*)$
+          example: Type 2 (Socket Only)
+    StatusType:
+      type: object
+      description: The Status Type of a site or equipment item indicates whether it is generally operational.
+      properties:
+        IsOperational:
+          type: boolean
+          default: false
+          example: true
+        IsUserSelectable:
+          type: boolean
+          default: false
+          example: true
+        ID:
+          type: integer
+          example: 50
+        Title:
+          type: string
+          example: Operational
       required:
+      - IsOperational
+      - IsUserSelectable
       - ID
     LevelType:
       type: object
@@ -548,35 +536,47 @@ components:
         Title:
           type: string
       description: Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)
-    SubmissionStatusType:
+    CheckinStatusType:
       type: object
-      description: Submission Status object, detailing the POI listing status
+      description: Classification for the users comment or experience using a specific charging location.
       properties:
         ID:
           type: integer
-          description: Submission Status Type reference ID
-          default: 0
-          example: 200
         Title:
           type: string
-        IsLive:
+        IsAutomatedCheckin:
           type: boolean
-          description: If true, POI listing is live (not draft or de-listed)
-          default: false
+          description: If true, checkin or comment was provided by an automated system.
+        IsPositive:
+          type: boolean
+          description: If true, this type of checkin/comment is considered positive.
       required:
       - ID
-      - IsLive
-    SupplyType:
+      - IsAutomatedCheckin
+    UsageType:
       type: object
-      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
+      description: The Usage Type of a site indicates the general restrictions on usage.
       properties:
+        IsPayAtLocation:
+          type: boolean
+          description: If true, usage requires paying at location
+        IsMembershipRequired:
+          type: boolean
+          description: If true, this usage type requires registration or membership with a service.
+        IsAccessKeyRequired:
+          type: boolean
+          description: If true this usage required a physical access key
+          deprecated: true
         ID:
           type: integer
-          example: 10
         Title:
           type: string
-          example: AC (Single-Phase)
+          example: Public - Membership Required
+          pattern: ^(.*)$
       required:
+      - IsPayAtLocation
+      - IsMembershipRequired
+      - IsAccessKeyRequired
       - ID
   securitySchemes:
     APIKeyQueryString:

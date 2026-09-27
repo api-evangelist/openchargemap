@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Open Charge Map Openapi API
+  title: Open Charge Map OpenAPI API
   version: '3.1'
   termsOfService: https://openchargemap.org/site/about/terms
   contact:
