@@ -213,150 +213,6 @@ components:
       - ID
       - ISOCode
       - ContinentCode
-    OperatorInfo:
-      type: object
-      description: An Operator is the public organisation which controls a network of charging points.
-      properties:
-        WebsiteURL:
-          type: string
-          description: Website for more information about this network
-          example: http://www.pod-point.com/
-          pattern: ^(.*)$
-        Comments:
-          type: string
-          example: null
-        PhonePrimaryContact:
-          type: string
-          description: Primary contact number for network users
-          default: null
-        PhoneSecondaryContact:
-          type: string
-          description: Secondary contact number
-          default: null
-          pattern: ^(.*)$
-        IsPrivateIndividual:
-          type: boolean
-          description: If true, this operator represents a private individual
-          deprecated: true
-          default: false
-          example: false
-        AddressInfo:
-          $ref: '#/components/schemas/AddressInfo'
-        BookingURL:
-          type: string
-        ContactEmail:
-          type: string
-          default: ''
-          example: enquiries@pod-point.com
-          pattern: ^(.*)$
-        FaultReportEmail:
-          type: string
-          description: Used to send automated notification to network operator if a user submits a fault report comment/check-in
-          example: enquiries@pod-point.com
-          pattern: ^(.*)$
-        IsRestrictedEdit:
-          type: boolean
-          description: If true, this network restricts community edits for OCM data
-        ID:
-          type: integer
-          description: Id
-        Title:
-          type: string
-          description: Title
-          example: POD Point (UK)
-          pattern: ^(.*)$
-      required:
-      - ID
-    ConnectionInfo:
-      type: object
-      description: 'Details on the equipment type and power capability.
-
-
-        If calling the API in verbose mode related models are also included in the result (e.g. ConnectionType, Level, StatusType, CurrentType)'
-      properties:
-        ID:
-          type: integer
-          example: 206241
-        ConnectionTypeID:
-          type: integer
-          default: null
-          example: 25
-        ConnectionType:
-          $ref: '#/components/schemas/ConnectionType'
-        Reference:
-          type: string
-          description: Optional operators reference for this connection/port
-          default: null
-        StatusTypeID:
-          type: integer
-          description: Status Type reference ID. 0 = Unknown
-          default: 0
-          example: 50
-        StatusType:
-          $ref: '#/components/schemas/StatusType'
-        LevelID:
-          type: integer
-          example: 2
-          description: A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.
-          deprecated: true
-        Level:
-          $ref: '#/components/schemas/LevelType'
-        Amps:
-          type: integer
-          description: EVSE supply max current in Amps
-          default: null
-          example: 32
-        Voltage:
-          type: number
-          description: EVSE supply voltage
-          default: null
-          example: 230
-        PowerKW:
-          type: number
-          description: Peak available power in kW
-          default: null
-          example: 7.4
-        CurrentTypeID:
-          description: The supply type reference ID (e.g. DC etc)
-          default: null
-          example: 10
-          type: integer
-        CurrentType:
-          $ref: '#/components/schemas/SupplyType'
-        Quantity:
-          type: integer
-          description: Optional summary number of equipment items available with this specification
-          default: null
-          example: 2
-        Comments:
-          type: string
-    UserComment:
-      type: object
-      description: A user comment or check-in for a specific charging point (POI/Site)
-      properties:
-        ID:
-          type: string
-        ChargePointID:
-          type: integer
-        CommentTypeID:
-          type: integer
-        CommentType:
-          $ref: '#/components/schemas/UserCommentType'
-        UserName:
-          type: string
-        Comment:
-          type: string
-        RelatedURL:
-          type: string
-        DateCreated:
-          type: string
-          format: date-time
-        User:
-          $ref: '#/components/schemas/UserInfo'
-        CheckinStatusTypeID:
-          type: integer
-        CheckinStatusType:
-          $ref: '#/components/schemas/CheckinStatusType'
     AddressInfo:
       type: object
       description: Geographic position for site and (nearest) address component information.
@@ -439,119 +295,86 @@ components:
       - CountryID
       - Latitude
       - Longitude
-    DataProvider:
+    MediaItem:
       type: object
-      description: A Data Provider is the controller of the source data set used to construct the details for this POI. Data has been transformed and interpreted from it's original form. Each Data Provider provides data either by an explicit license or agreement.
+      description: A user submitted media item related to a specific charge point or site. Currently always an image.
+      properties:
+        ID:
+          type: string
+        ChargePointID:
+          type: string
+        ItemURL:
+          type: string
+        ItemThumbnailURL:
+          type: string
+        Comment:
+          type: string
+        IsEnabled:
+          type: boolean
+        IsVideo:
+          type: boolean
+        IsFeaturedItem:
+          type: boolean
+        IsExternalResource:
+          type: boolean
+        User:
+          $ref: '#/components/schemas/UserInfo'
+        DateCreated:
+          type: string
+    OperatorInfo:
+      type: object
+      description: An Operator is the public organisation which controls a network of charging points.
       properties:
         WebsiteURL:
           type: string
-          description: Website URL for this data provider
-          example: https://openchargemap.org
+          description: Website for more information about this network
+          example: http://www.pod-point.com/
           pattern: ^(.*)$
         Comments:
           type: string
-          description: General public comments with information about this Data Provider.
-        DataProviderStatusType:
-          type: object
-          description: Status object describing whether this data provider is currently enabled and the type of source (manual entry, imported etc)
-          properties:
-            IsProviderEnabled:
-              type: boolean
-              description: If false, results from this data provider are not currently enabled
-              default: false
-              example: true
-            ID:
-              type: integer
-              description: The reference ID for this provider status type
-              default: 0
-              example:
-              - 1
-            description:
-              type: string
-              description: The Title of this status type
-              example:
-              - Manual Data Entry
-              pattern: ^(.*)$
-          required:
-          - IsProviderEnabled
-          - ID
-        IsRestrictedEdit:
+          example: null
+        PhonePrimaryContact:
+          type: string
+          description: Primary contact number for network users
+          default: null
+        PhoneSecondaryContact:
+          type: string
+          description: Secondary contact number
+          default: null
+          pattern: ^(.*)$
+        IsPrivateIndividual:
           type: boolean
-          description: Currently not implemented. Indicates a potential editing restriction.
+          description: If true, this operator represents a private individual
+          deprecated: true
           default: false
           example: false
-        IsOpenDataLicensed:
-          type: boolean
-          description: If true, data provider uses an Open Data license
-          example: true
-        IsApprovedImport:
-          type: boolean
-          description: If false, data may not be imported for this provider.
-          example: true
-        License:
+        AddressInfo:
+          $ref: '#/components/schemas/AddressInfo'
+        BookingURL:
           type: string
-          description: Summary of the licensing which applies for this Data Provider. Each Data Provider has one specific license or agreement. Usage of the data requires acceptance of the given license.
-          example: Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+        ContactEmail:
+          type: string
+          default: ''
+          example: enquiries@pod-point.com
           pattern: ^(.*)$
-        DateLastImported:
+        FaultReportEmail:
           type: string
-          format: date-time
-          description: Date and time (UTC) the last import was performed for this data provider (if an import).
-          example: '2020-02-04T23:09:00Z'
+          description: Used to send automated notification to network operator if a user submits a fault report comment/check-in
+          example: enquiries@pod-point.com
+          pattern: ^(.*)$
+        IsRestrictedEdit:
+          type: boolean
+          description: If true, this network restricts community edits for OCM data
         ID:
           type: integer
-          description: The reference ID for this Data Provider
-          example: 1
+          description: Id
         Title:
           type: string
-          description: The Title for this Data Provider
-          example: Open Charge Map Contributors
+          description: Title
+          example: POD Point (UK)
           pattern: ^(.*)$
       required:
-      - IsRestrictedEdit
       - ID
-    SupplyType:
-      type: object
-      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
-      properties:
-        ID:
-          type: integer
-          example: 10
-        Title:
-          type: string
-          example: AC (Single-Phase)
-      required:
-      - ID
-    UserInfo:
-      type: object
-      description: Short public summary profile for a specific Open Charge Map user
-      properties:
-        ID:
-          type: integer
-        Username:
-          type: string
-        ReputationPoints:
-          type: integer
-        ProfileImageURL:
-          type: string
-    SubmissionStatusType:
-      type: object
-      description: Submission Status object, detailing the POI listing status
-      properties:
-        ID:
-          type: integer
-          description: Submission Status Type reference ID
-          default: 0
-          example: 200
-        Title:
-          type: string
-        IsLive:
-          type: boolean
-          description: If true, POI listing is live (not draft or de-listed)
-          default: false
-      required:
-      - ID
-      - IsLive
     POI:
       title: POI
       type: object
@@ -1041,6 +864,87 @@ components:
           ID: 200
           Title: string
           IsLive: false
+    UserCommentType:
+      title: UserCommentType
+      type: object
+      properties:
+        ID:
+          type: integer
+        Title:
+          type: string
+      description: Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)
+    UserComment:
+      type: object
+      description: A user comment or check-in for a specific charging point (POI/Site)
+      properties:
+        ID:
+          type: string
+        ChargePointID:
+          type: integer
+        CommentTypeID:
+          type: integer
+        CommentType:
+          $ref: '#/components/schemas/UserCommentType'
+        UserName:
+          type: string
+        Comment:
+          type: string
+        RelatedURL:
+          type: string
+        DateCreated:
+          type: string
+          format: date-time
+        User:
+          $ref: '#/components/schemas/UserInfo'
+        CheckinStatusTypeID:
+          type: integer
+        CheckinStatusType:
+          $ref: '#/components/schemas/CheckinStatusType'
+    LevelType:
+      type: object
+      description: A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.
+      properties:
+        ID:
+          type: integer
+          example: 2
+        Title:
+          type: string
+          example: 'Level 2 : Medium (Over 2kW)'
+        Comments:
+          type: string
+          example: Over 2 kW, usually non-domestic socket type
+        IsFastChargeCapable:
+          type: boolean
+          description: If true, this level is considered 'fast' charging, relative to other levels.
+      required:
+      - ID
+      - Comments
+      - IsFastChargeCapable
+    UsageType:
+      type: object
+      description: The Usage Type of a site indicates the general restrictions on usage.
+      properties:
+        IsPayAtLocation:
+          type: boolean
+          description: If true, usage requires paying at location
+        IsMembershipRequired:
+          type: boolean
+          description: If true, this usage type requires registration or membership with a service.
+        IsAccessKeyRequired:
+          type: boolean
+          description: If true this usage required a physical access key
+          deprecated: true
+        ID:
+          type: integer
+        Title:
+          type: string
+          example: Public - Membership Required
+          pattern: ^(.*)$
+      required:
+      - IsPayAtLocation
+      - IsMembershipRequired
+      - IsAccessKeyRequired
+      - ID
     ConnectionType:
       type: object
       description: The type of end-user connection an EVSE supports.
@@ -1067,6 +971,18 @@ components:
         Title:
           type: string
           example: Type 2 (Socket Only)
+    SupplyType:
+      type: object
+      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
+      properties:
+        ID:
+          type: integer
+          example: 10
+        Title:
+          type: string
+          example: AC (Single-Phase)
+      required:
+      - ID
     StatusType:
       type: object
       description: The Status Type of a site or equipment item indicates whether it is generally operational.
@@ -1089,61 +1005,107 @@ components:
       - IsOperational
       - IsUserSelectable
       - ID
-    LevelType:
+    UserInfo:
       type: object
-      description: A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.
+      description: Short public summary profile for a specific Open Charge Map user
       properties:
         ID:
           type: integer
-          example: 2
+        Username:
+          type: string
+        ReputationPoints:
+          type: integer
+        ProfileImageURL:
+          type: string
+    SubmissionStatusType:
+      type: object
+      description: Submission Status object, detailing the POI listing status
+      properties:
+        ID:
+          type: integer
+          description: Submission Status Type reference ID
+          default: 0
+          example: 200
         Title:
           type: string
-          example: 'Level 2 : Medium (Over 2kW)'
-        Comments:
-          type: string
-          example: Over 2 kW, usually non-domestic socket type
-        IsFastChargeCapable:
+        IsLive:
           type: boolean
-          description: If true, this level is considered 'fast' charging, relative to other levels.
+          description: If true, POI listing is live (not draft or de-listed)
+          default: false
       required:
       - ID
-      - Comments
-      - IsFastChargeCapable
-    UserCommentType:
-      title: UserCommentType
+      - IsLive
+    DataProvider:
       type: object
+      description: A Data Provider is the controller of the source data set used to construct the details for this POI. Data has been transformed and interpreted from it's original form. Each Data Provider provides data either by an explicit license or agreement.
       properties:
+        WebsiteURL:
+          type: string
+          description: Website URL for this data provider
+          example: https://openchargemap.org
+          pattern: ^(.*)$
+        Comments:
+          type: string
+          description: General public comments with information about this Data Provider.
+        DataProviderStatusType:
+          type: object
+          description: Status object describing whether this data provider is currently enabled and the type of source (manual entry, imported etc)
+          properties:
+            IsProviderEnabled:
+              type: boolean
+              description: If false, results from this data provider are not currently enabled
+              default: false
+              example: true
+            ID:
+              type: integer
+              description: The reference ID for this provider status type
+              default: 0
+              example:
+              - 1
+            description:
+              type: string
+              description: The Title of this status type
+              example:
+              - Manual Data Entry
+              pattern: ^(.*)$
+          required:
+          - IsProviderEnabled
+          - ID
+        IsRestrictedEdit:
+          type: boolean
+          description: Currently not implemented. Indicates a potential editing restriction.
+          default: false
+          example: false
+        IsOpenDataLicensed:
+          type: boolean
+          description: If true, data provider uses an Open Data license
+          example: true
+        IsApprovedImport:
+          type: boolean
+          description: If false, data may not be imported for this provider.
+          example: true
+        License:
+          type: string
+          description: Summary of the licensing which applies for this Data Provider. Each Data Provider has one specific license or agreement. Usage of the data requires acceptance of the given license.
+          example: Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+          pattern: ^(.*)$
+        DateLastImported:
+          type: string
+          format: date-time
+          description: Date and time (UTC) the last import was performed for this data provider (if an import).
+          example: '2020-02-04T23:09:00Z'
         ID:
           type: integer
+          description: The reference ID for this Data Provider
+          example: 1
         Title:
           type: string
-      description: Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)
-    MediaItem:
-      type: object
-      description: A user submitted media item related to a specific charge point or site. Currently always an image.
-      properties:
-        ID:
-          type: string
-        ChargePointID:
-          type: string
-        ItemURL:
-          type: string
-        ItemThumbnailURL:
-          type: string
-        Comment:
-          type: string
-        IsEnabled:
-          type: boolean
-        IsVideo:
-          type: boolean
-        IsFeaturedItem:
-          type: boolean
-        IsExternalResource:
-          type: boolean
-        User:
-          $ref: '#/components/schemas/UserInfo'
-        DateCreated:
-          type: string
+          description: The Title for this Data Provider
+          example: Open Charge Map Contributors
+          pattern: ^(.*)$
+      required:
+      - IsRestrictedEdit
+      - ID
     CheckinStatusType:
       type: object
       description: Classification for the users comment or experience using a specific charging location.
@@ -1161,31 +1123,69 @@ components:
       required:
       - ID
       - IsAutomatedCheckin
-    UsageType:
+    ConnectionInfo:
       type: object
-      description: The Usage Type of a site indicates the general restrictions on usage.
+      description: 'Details on the equipment type and power capability.
+
+
+        If calling the API in verbose mode related models are also included in the result (e.g. ConnectionType, Level, StatusType, CurrentType)'
       properties:
-        IsPayAtLocation:
-          type: boolean
-          description: If true, usage requires paying at location
-        IsMembershipRequired:
-          type: boolean
-          description: If true, this usage type requires registration or membership with a service.
-        IsAccessKeyRequired:
-          type: boolean
-          description: If true this usage required a physical access key
-          deprecated: true
         ID:
           type: integer
-        Title:
+          example: 206241
+        ConnectionTypeID:
+          type: integer
+          default: null
+          example: 25
+        ConnectionType:
+          $ref: '#/components/schemas/ConnectionType'
+        Reference:
           type: string
-          example: Public - Membership Required
-          pattern: ^(.*)$
-      required:
-      - IsPayAtLocation
-      - IsMembershipRequired
-      - IsAccessKeyRequired
-      - ID
+          description: Optional operators reference for this connection/port
+          default: null
+        StatusTypeID:
+          type: integer
+          description: Status Type reference ID. 0 = Unknown
+          default: 0
+          example: 50
+        StatusType:
+          $ref: '#/components/schemas/StatusType'
+        LevelID:
+          type: integer
+          example: 2
+          description: A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.
+          deprecated: true
+        Level:
+          $ref: '#/components/schemas/LevelType'
+        Amps:
+          type: integer
+          description: EVSE supply max current in Amps
+          default: null
+          example: 32
+        Voltage:
+          type: number
+          description: EVSE supply voltage
+          default: null
+          example: 230
+        PowerKW:
+          type: number
+          description: Peak available power in kW
+          default: null
+          example: 7.4
+        CurrentTypeID:
+          description: The supply type reference ID (e.g. DC etc)
+          default: null
+          example: 10
+          type: integer
+        CurrentType:
+          $ref: '#/components/schemas/SupplyType'
+        Quantity:
+          type: integer
+          description: Optional summary number of equipment items available with this specification
+          default: null
+          example: 2
+        Comments:
+          type: string
   responses:
     POI:
       description: List of POIs (sites) with associated equipment summary information.
