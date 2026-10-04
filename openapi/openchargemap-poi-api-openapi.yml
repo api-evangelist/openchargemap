@@ -182,145 +182,55 @@ paths:
       x-internal: false
 components:
   schemas:
-    Country:
+    UserInfo:
       type: object
-      description: Country details
+      description: Short public summary profile for a specific Open Charge Map user
       properties:
         ID:
           type: integer
-          description: The Id Schema
-          default: 0
-          example: 1
-        ISOCode:
+        Username:
           type: string
-          description: The Isocode Schema
-          default: ''
-          example: GB
-          pattern: ^(.*)$
-        ContinentCode:
+        ReputationPoints:
+          type: integer
+        ProfileImageURL:
           type: string
-          description: The Continentcode Schema
-          default: ''
-          example: EU
-          pattern: ^(.*)$
+    LevelType:
+      type: object
+      description: A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.
+      properties:
+        ID:
+          type: integer
+          example: 2
         Title:
           type: string
-          description: The Title Schema
-          default: ''
-          example: United Kingdom
-          pattern: ^(.*)$
+          example: 'Level 2 : Medium (Over 2kW)'
+        Comments:
+          type: string
+          example: Over 2 kW, usually non-domestic socket type
+        IsFastChargeCapable:
+          type: boolean
+          description: If true, this level is considered 'fast' charging, relative to other levels.
       required:
       - ID
-      - ISOCode
-      - ContinentCode
-    AddressInfo:
+      - Comments
+      - IsFastChargeCapable
+    CheckinStatusType:
       type: object
-      description: Geographic position for site and (nearest) address component information.
+      description: Classification for the users comment or experience using a specific charging location.
       properties:
         ID:
           type: integer
-          description: ID
-          default: 0
-          example: 148879
-        AddressLine1:
-          type: string
-          description: First line of nearby street address
-          default: ''
-          example: Buttsgrove Way
-          pattern: ^(.*)$
-        AddressLine2:
-          type: string
-          description: Second line of nearby street address
-          default: null
-        Town:
-          type: string
-          description: Town or City
-          example: Huntingdon
-          pattern: ^(.*)$
-        StateOrProvince:
-          type: string
-          description: State or Province
-        Postcode:
-          type: string
-          description: Postal code or Zipcode
-          example: PE29 1PE
-          pattern: ^(.*)$
-        CountryID:
-          type: integer
-          description: The reference ID for the Country
-          example: 1
-        Country:
-          $ref: '#/components/schemas/Country'
-        Latitude:
-          type: number
-          description: Site latitude coordinate in decimal degrees
-          default: 0
-          example: 52.343197
-        Longitude:
-          type: number
-          description: Site longitude coordinate in decimal degrees
-          default: 0
-          example: -0.170632
-        ContactTelephone1:
-          type: string
-          description: Primary contact number
-          default: null
-        ContactTelephone2:
-          type: string
-          description: Secondary contact number
-          default: null
-        ContactEmail:
-          type: string
-          description: Primary contact email
-        AccessComments:
-          type: string
-          description: Guidance for users to use or find the equipment
-        RelatedURL:
-          type: string
-          description: Optional website for more information
-          default: null
-        Distance:
-          type: number
-          description: Distance from search location, if search is around a point
-          default: null
-        DistanceUnit:
-          type: integer
-          description: Unit used for distance, 1= Miles, 2 = KM
-          default: 1
         Title:
           type: string
-          description: General title for this location to aid user
+        IsAutomatedCheckin:
+          type: boolean
+          description: If true, checkin or comment was provided by an automated system.
+        IsPositive:
+          type: boolean
+          description: If true, this type of checkin/comment is considered positive.
       required:
       - ID
-      - CountryID
-      - Latitude
-      - Longitude
-    MediaItem:
-      type: object
-      description: A user submitted media item related to a specific charge point or site. Currently always an image.
-      properties:
-        ID:
-          type: string
-        ChargePointID:
-          type: string
-        ItemURL:
-          type: string
-        ItemThumbnailURL:
-          type: string
-        Comment:
-          type: string
-        IsEnabled:
-          type: boolean
-        IsVideo:
-          type: boolean
-        IsFeaturedItem:
-          type: boolean
-        IsExternalResource:
-          type: boolean
-        User:
-          $ref: '#/components/schemas/UserInfo'
-        DateCreated:
-          type: string
+      - IsAutomatedCheckin
     OperatorInfo:
       type: object
       description: An Operator is the public organisation which controls a network of charging points.
@@ -375,6 +285,24 @@ components:
           pattern: ^(.*)$
       required:
       - ID
+    SubmissionStatusType:
+      type: object
+      description: Submission Status object, detailing the POI listing status
+      properties:
+        ID:
+          type: integer
+          description: Submission Status Type reference ID
+          default: 0
+          example: 200
+        Title:
+          type: string
+        IsLive:
+          type: boolean
+          description: If true, POI listing is live (not draft or de-listed)
+          default: false
+      required:
+      - ID
+      - IsLive
     POI:
       title: POI
       type: object
@@ -864,6 +792,88 @@ components:
           ID: 200
           Title: string
           IsLive: false
+    AddressInfo:
+      type: object
+      description: Geographic position for site and (nearest) address component information.
+      properties:
+        ID:
+          type: integer
+          description: ID
+          default: 0
+          example: 148879
+        AddressLine1:
+          type: string
+          description: First line of nearby street address
+          default: ''
+          example: Buttsgrove Way
+          pattern: ^(.*)$
+        AddressLine2:
+          type: string
+          description: Second line of nearby street address
+          default: null
+        Town:
+          type: string
+          description: Town or City
+          example: Huntingdon
+          pattern: ^(.*)$
+        StateOrProvince:
+          type: string
+          description: State or Province
+        Postcode:
+          type: string
+          description: Postal code or Zipcode
+          example: PE29 1PE
+          pattern: ^(.*)$
+        CountryID:
+          type: integer
+          description: The reference ID for the Country
+          example: 1
+        Country:
+          $ref: '#/components/schemas/Country'
+        Latitude:
+          type: number
+          description: Site latitude coordinate in decimal degrees
+          default: 0
+          example: 52.343197
+        Longitude:
+          type: number
+          description: Site longitude coordinate in decimal degrees
+          default: 0
+          example: -0.170632
+        ContactTelephone1:
+          type: string
+          description: Primary contact number
+          default: null
+        ContactTelephone2:
+          type: string
+          description: Secondary contact number
+          default: null
+        ContactEmail:
+          type: string
+          description: Primary contact email
+        AccessComments:
+          type: string
+          description: Guidance for users to use or find the equipment
+        RelatedURL:
+          type: string
+          description: Optional website for more information
+          default: null
+        Distance:
+          type: number
+          description: Distance from search location, if search is around a point
+          default: null
+        DistanceUnit:
+          type: integer
+          description: Unit used for distance, 1= Miles, 2 = KM
+          default: 1
+        Title:
+          type: string
+          description: General title for this location to aid user
+      required:
+      - ID
+      - CountryID
+      - Latitude
+      - Longitude
     UserCommentType:
       title: UserCommentType
       type: object
@@ -873,78 +883,95 @@ components:
         Title:
           type: string
       description: Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)
-    UserComment:
+    MediaItem:
       type: object
-      description: A user comment or check-in for a specific charging point (POI/Site)
+      description: A user submitted media item related to a specific charge point or site. Currently always an image.
       properties:
         ID:
           type: string
         ChargePointID:
-          type: integer
-        CommentTypeID:
-          type: integer
-        CommentType:
-          $ref: '#/components/schemas/UserCommentType'
-        UserName:
+          type: string
+        ItemURL:
+          type: string
+        ItemThumbnailURL:
           type: string
         Comment:
           type: string
-        RelatedURL:
-          type: string
-        DateCreated:
-          type: string
-          format: date-time
+        IsEnabled:
+          type: boolean
+        IsVideo:
+          type: boolean
+        IsFeaturedItem:
+          type: boolean
+        IsExternalResource:
+          type: boolean
         User:
           $ref: '#/components/schemas/UserInfo'
-        CheckinStatusTypeID:
-          type: integer
-        CheckinStatusType:
-          $ref: '#/components/schemas/CheckinStatusType'
-    LevelType:
+        DateCreated:
+          type: string
+    ConnectionInfo:
       type: object
-      description: A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.
+      description: 'Details on the equipment type and power capability.
+
+
+        If calling the API in verbose mode related models are also included in the result (e.g. ConnectionType, Level, StatusType, CurrentType)'
       properties:
         ID:
+          type: integer
+          example: 206241
+        ConnectionTypeID:
+          type: integer
+          default: null
+          example: 25
+        ConnectionType:
+          $ref: '#/components/schemas/ConnectionType'
+        Reference:
+          type: string
+          description: Optional operators reference for this connection/port
+          default: null
+        StatusTypeID:
+          type: integer
+          description: Status Type reference ID. 0 = Unknown
+          default: 0
+          example: 50
+        StatusType:
+          $ref: '#/components/schemas/StatusType'
+        LevelID:
           type: integer
           example: 2
-        Title:
-          type: string
-          example: 'Level 2 : Medium (Over 2kW)'
+          description: A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.
+          deprecated: true
+        Level:
+          $ref: '#/components/schemas/LevelType'
+        Amps:
+          type: integer
+          description: EVSE supply max current in Amps
+          default: null
+          example: 32
+        Voltage:
+          type: number
+          description: EVSE supply voltage
+          default: null
+          example: 230
+        PowerKW:
+          type: number
+          description: Peak available power in kW
+          default: null
+          example: 7.4
+        CurrentTypeID:
+          description: The supply type reference ID (e.g. DC etc)
+          default: null
+          example: 10
+          type: integer
+        CurrentType:
+          $ref: '#/components/schemas/SupplyType'
+        Quantity:
+          type: integer
+          description: Optional summary number of equipment items available with this specification
+          default: null
+          example: 2
         Comments:
           type: string
-          example: Over 2 kW, usually non-domestic socket type
-        IsFastChargeCapable:
-          type: boolean
-          description: If true, this level is considered 'fast' charging, relative to other levels.
-      required:
-      - ID
-      - Comments
-      - IsFastChargeCapable
-    UsageType:
-      type: object
-      description: The Usage Type of a site indicates the general restrictions on usage.
-      properties:
-        IsPayAtLocation:
-          type: boolean
-          description: If true, usage requires paying at location
-        IsMembershipRequired:
-          type: boolean
-          description: If true, this usage type requires registration or membership with a service.
-        IsAccessKeyRequired:
-          type: boolean
-          description: If true this usage required a physical access key
-          deprecated: true
-        ID:
-          type: integer
-        Title:
-          type: string
-          example: Public - Membership Required
-          pattern: ^(.*)$
-      required:
-      - IsPayAtLocation
-      - IsMembershipRequired
-      - IsAccessKeyRequired
-      - ID
     ConnectionType:
       type: object
       description: The type of end-user connection an EVSE supports.
@@ -971,17 +998,30 @@ components:
         Title:
           type: string
           example: Type 2 (Socket Only)
-    SupplyType:
+    UsageType:
       type: object
-      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
+      description: The Usage Type of a site indicates the general restrictions on usage.
       properties:
+        IsPayAtLocation:
+          type: boolean
+          description: If true, usage requires paying at location
+        IsMembershipRequired:
+          type: boolean
+          description: If true, this usage type requires registration or membership with a service.
+        IsAccessKeyRequired:
+          type: boolean
+          description: If true this usage required a physical access key
+          deprecated: true
         ID:
           type: integer
-          example: 10
         Title:
           type: string
-          example: AC (Single-Phase)
+          example: Public - Membership Required
+          pattern: ^(.*)$
       required:
+      - IsPayAtLocation
+      - IsMembershipRequired
+      - IsAccessKeyRequired
       - ID
     StatusType:
       type: object
@@ -1005,36 +1045,37 @@ components:
       - IsOperational
       - IsUserSelectable
       - ID
-    UserInfo:
+    Country:
       type: object
-      description: Short public summary profile for a specific Open Charge Map user
+      description: Country details
       properties:
         ID:
           type: integer
-        Username:
-          type: string
-        ReputationPoints:
-          type: integer
-        ProfileImageURL:
-          type: string
-    SubmissionStatusType:
-      type: object
-      description: Submission Status object, detailing the POI listing status
-      properties:
-        ID:
-          type: integer
-          description: Submission Status Type reference ID
+          description: The Id Schema
           default: 0
-          example: 200
+          example: 1
+        ISOCode:
+          type: string
+          description: The Isocode Schema
+          default: ''
+          example: GB
+          pattern: ^(.*)$
+        ContinentCode:
+          type: string
+          description: The Continentcode Schema
+          default: ''
+          example: EU
+          pattern: ^(.*)$
         Title:
           type: string
-        IsLive:
-          type: boolean
-          description: If true, POI listing is live (not draft or de-listed)
-          default: false
+          description: The Title Schema
+          default: ''
+          example: United Kingdom
+          pattern: ^(.*)$
       required:
       - ID
-      - IsLive
+      - ISOCode
+      - ContinentCode
     DataProvider:
       type: object
       description: A Data Provider is the controller of the source data set used to construct the details for this POI. Data has been transformed and interpreted from it's original form. Each Data Provider provides data either by an explicit license or agreement.
@@ -1106,86 +1147,45 @@ components:
       required:
       - IsRestrictedEdit
       - ID
-    CheckinStatusType:
+    SupplyType:
       type: object
-      description: Classification for the users comment or experience using a specific charging location.
+      description: Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
       properties:
         ID:
           type: integer
+          example: 10
         Title:
           type: string
-        IsAutomatedCheckin:
-          type: boolean
-          description: If true, checkin or comment was provided by an automated system.
-        IsPositive:
-          type: boolean
-          description: If true, this type of checkin/comment is considered positive.
+          example: AC (Single-Phase)
       required:
       - ID
-      - IsAutomatedCheckin
-    ConnectionInfo:
+    UserComment:
       type: object
-      description: 'Details on the equipment type and power capability.
-
-
-        If calling the API in verbose mode related models are also included in the result (e.g. ConnectionType, Level, StatusType, CurrentType)'
+      description: A user comment or check-in for a specific charging point (POI/Site)
       properties:
         ID:
-          type: integer
-          example: 206241
-        ConnectionTypeID:
-          type: integer
-          default: null
-          example: 25
-        ConnectionType:
-          $ref: '#/components/schemas/ConnectionType'
-        Reference:
           type: string
-          description: Optional operators reference for this connection/port
-          default: null
-        StatusTypeID:
+        ChargePointID:
           type: integer
-          description: Status Type reference ID. 0 = Unknown
-          default: 0
-          example: 50
-        StatusType:
-          $ref: '#/components/schemas/StatusType'
-        LevelID:
+        CommentTypeID:
           type: integer
-          example: 2
-          description: A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.
-          deprecated: true
-        Level:
-          $ref: '#/components/schemas/LevelType'
-        Amps:
-          type: integer
-          description: EVSE supply max current in Amps
-          default: null
-          example: 32
-        Voltage:
-          type: number
-          description: EVSE supply voltage
-          default: null
-          example: 230
-        PowerKW:
-          type: number
-          description: Peak available power in kW
-          default: null
-          example: 7.4
-        CurrentTypeID:
-          description: The supply type reference ID (e.g. DC etc)
-          default: null
-          example: 10
-          type: integer
-        CurrentType:
-          $ref: '#/components/schemas/SupplyType'
-        Quantity:
-          type: integer
-          description: Optional summary number of equipment items available with this specification
-          default: null
-          example: 2
-        Comments:
+        CommentType:
+          $ref: '#/components/schemas/UserCommentType'
+        UserName:
           type: string
+        Comment:
+          type: string
+        RelatedURL:
+          type: string
+        DateCreated:
+          type: string
+          format: date-time
+        User:
+          $ref: '#/components/schemas/UserInfo'
+        CheckinStatusTypeID:
+          type: integer
+        CheckinStatusType:
+          $ref: '#/components/schemas/CheckinStatusType'
   responses:
     POI:
       description: List of POIs (sites) with associated equipment summary information.

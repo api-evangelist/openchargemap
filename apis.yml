@@ -170,8 +170,6 @@ apis:
   humanURL: https://openchargemap.org/site/develop/api
   baseURL: https://api.openchargemap.io/v3
   tags:
-  - OpenAPI
-  tags_raw:
   - Open API
   properties:
   - type: OpenAPI
