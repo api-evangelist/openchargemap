@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Open Charge Map API Plans
 description: >
   Open Charge Map operates as a non-commercial, community-supported open data project.
@@ -57,3 +61,22 @@ notes:
   - API keys are free — register at https://openchargemap.org/loginprovider/beginlogin
   - Commercial organizations using the API are encouraged to donate or sponsor the project
   - Data is available under open data licenses from contributing data providers
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Free / Community
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Contributor
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
