@@ -180,6 +180,16 @@ edges:
   evidence: https://openchargemap.org/site/poi?operatorid=3739
   detected_by: sweep-automotive.py
   detected: '2026-10-13'
+- partner_name: Ionity
+  partner: ionity
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: claimed
+  relationship: endpoint-coverage
+  evidence: https://openchargemap.org/site/poi?operatorid=3299
+  detected_by: sweep-automotive.py
+  detected: '2026-10-13'
 - partner_name: Jolt
   partner: jolt-charge
   partner_match: domain

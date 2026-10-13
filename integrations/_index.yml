@@ -201,6 +201,17 @@
   relationship: endpoint-coverage
   status: not-a-workflow
   arazzo: null
+- slug: openchargemap-ionity
+  label: Ionity
+  partner: ionity
+  partner_name: Ionity
+  type: claimed
+  channel: provider-built
+  evidence: https://openchargemap.org/site/poi?operatorid=3299
+  source: edge
+  relationship: endpoint-coverage
+  status: not-a-workflow
+  arazzo: null
 - slug: openchargemap-jolt
   label: Jolt
   partner: jolt-charge
