@@ -271,5 +271,41 @@ edges:
   evidence: https://openchargemap.org/site/poi?operatorid=3969
   detected_by: sweep-automotive.py
   detected: '2026-10-13'
+- partner_name: LF Energy (membership / landscape)
+  partner: lf-energy
+  partner_match: register
+  type: register
+  direction: partner-built
+  category: LF Energy landscape listing
+  evidence: https://github.com/lf-energy/lfenergy-landscape/blob/1364cff4a6379fe8e87568eb5134fd6e8b4ded8e/landscape.yml
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: LF Energy Landscape (github.com/lf-energy/lfenergy-landscape landscape.yml @1364cff4a6)
+    spec_file: null
+    standard: LF Energy
+    role: landscape-listed
+    registered_name: Open Charge Map
+    registered_names:
+    - Open Charge Map
+    website: https://openchargemap.org
+    matched_domain: openchargemap.org
+    matched_by: domain
+    landscape_categories:
+    - Consumption of Energy and Resources / Mobility and Transportation
+    landscape_entries: 1
+    signal_note: 'participation only: LF Energy membership / a landscape listing is standard-participant evidence,
+      not depth. Tier, entries and categories are CONTEXT, never counted'
+    detected_by: sweep-lf-energy-projects.py
+    detected: '2026-10-22'
+  detected_by: sweep-lf-energy-projects.py
+  first_seen: '2026-10-22'
 method: searched
-checked: []
+checked:
+- https://landscape.lfenergy.org
+- https://lfenergy.org/projects/
+- https://raw.githubusercontent.com/lf-energy/lfenergy-landscape/1364cff4a6379fe8e87568eb5134fd6e8b4ded8e/landscape.yml
+source:
+- https://landscape.lfenergy.org
+- https://raw.githubusercontent.com/lf-energy/lfenergy-landscape/1364cff4a6379fe8e87568eb5134fd6e8b4ded8e/landscape.yml
+- https://lfenergy.org/projects/
